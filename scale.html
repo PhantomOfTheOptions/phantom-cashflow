@@ -3,35 +3,259 @@
 <head>
 <title>Cash Flow Scale</title>
 <style>
-body{background:#081326;color:white;font-family:Arial;padding:30px;}
-.container{max-width:1200px;margin:auto;}
-.nav{display:flex;justify-content:space-between;margin-bottom:35px;}
-.nav a{color:white;text-decoration:none;margin-left:20px;font-weight:bold;}
-.card{background:#13223d;padding:35px;border-radius:22px;}
-h1{text-align:center;font-size:42px;margin-bottom:8px;}
-.subtitle{text-align:center;color:#b9c7dd;margin-bottom:35px;}
-.grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:45px;align-items:center;}
-label{display:block;margin:12px 0 6px;color:#b9c7dd;font-weight:bold;}
-input{padding:15px;width:100%;border-radius:10px;border:none;font-size:18px;box-sizing:border-box;}
-button{padding:15px 28px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;margin-top:18px;cursor:pointer;}
-.result-box{text-align:center;margin-top:25px;}
-.cashflow{font-size:54px;color:#66d1ff;font-weight:bold;}
-.percent{font-size:36px;color:#86efac;font-weight:bold;margin-top:8px;}
-.status{font-size:20px;font-weight:bold;color:#ffffff;margin-top:8px;}
-.achieved{color:#86efac;font-size:24px;margin-top:10px;font-weight:bold;display:none;}
-.progress-wrap{background:#1f2937;border-radius:30px;overflow:hidden;height:34px;margin:24px 0 12px;}
-.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#22c55e,#38bdf8);}
-.details{color:#dbeafe;font-size:18px;}
-.level{font-size:20px;font-weight:bold;margin-top:8px;color:#ffffff;}
-.scale-area{height:400px;position:relative;}
+body{
+  background:#081326;
+  color:white;
+  font-family:Arial, sans-serif;
+  padding:30px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:35px;
+}
+
+.nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
+}
+
+.card{
+  background:#13223d;
+  padding:35px;
+  border-radius:22px;
+}
+
+h1{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#b9c7dd;
+  margin-bottom:15px;
+}
+
+.challenge-week{
+  text-align:center;
+  color:#86efac;
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:30px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:45px;
+  align-items:center;
+}
+
+label{
+  display:block;
+  margin:12px 0 6px;
+  color:#b9c7dd;
+  font-weight:bold;
+}
+
+input{
+  padding:15px;
+  width:100%;
+  border-radius:10px;
+  border:none;
+  font-size:18px;
+  box-sizing:border-box;
+}
+
+button{
+  padding:15px 28px;
+  background:#22c55e;
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  margin-top:18px;
+  cursor:pointer;
+}
+
+.result-box{
+  text-align:center;
+  margin-top:25px;
+}
+
+.cashflow{
+  font-size:54px;
+  color:#66d1ff;
+  font-weight:bold;
+}
+
+.percent{
+  font-size:36px;
+  color:#86efac;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+.status{
+  font-size:20px;
+  font-weight:bold;
+  color:#ffffff;
+  margin-top:8px;
+}
+
+.achieved{
+  color:#86efac;
+  font-size:24px;
+  margin-top:10px;
+  font-weight:bold;
+  display:none;
+}
+
+.goal-summary{
+  margin-top:18px;
+  margin-bottom:15px;
+  color:#dbeafe;
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+}
+
+.progress-wrap{
+  background:#1f2937;
+  border-radius:30px;
+  overflow:hidden;
+  height:34px;
+  margin:18px 0 12px;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#22c55e,#38bdf8);
+}
+
+.details{
+  color:#dbeafe;
+  font-size:18px;
+}
+
+.level{
+  font-size:20px;
+  font-weight:bold;
+  margin-top:8px;
+  color:#ffffff;
+}
+
+.milestones{
+  margin-top:15px;
+  color:#dbeafe;
+  font-size:16px;
+  line-height:1.8;
+  text-align:center;
+}
+
+.summary-card{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.mini{
+  background:#1b2f53;
+  padding:16px;
+  border-radius:14px;
+  text-align:center;
+}
+
+.mini span{
+  display:block;
+  color:#b9c7dd;
+  font-size:13px;
+}
+
+.mini strong{
+  font-size:22px;
+  color:#66d1ff;
+}
+
+.next-goal{
+  margin-top:15px;
+  background:#102040;
+  border-radius:14px;
+  padding:16px;
+  color:#dbeafe;
+  font-weight:bold;
+  text-align:center;
+}
+
+.scale-area{
+  height:420px;
+  position:relative;
+}
+
 .beam{
-  width:520px;height:16px;background:#cbd5e1;border-radius:20px;
-  position:absolute;left:52%;top:180px;transform:translateX(-50%) rotate(-25deg);
+  width:520px;
+  height:16px;
+  background:#cbd5e1;
+  border-radius:20px;
+  position:absolute;
+  left:52%;
+  top:190px;
+  transform:translateX(-50%) rotate(35deg);
   transition:.5s;
 }
-.stand{width:16px;height:170px;background:#94a3b8;position:absolute;left:52%;top:185px;transform:translateX(-50%);}
-.base{width:220px;height:20px;background:#94a3b8;border-radius:20px;position:absolute;left:52%;top:345px;transform:translateX(-50%);}
-.pivot{width:48px;height:48px;background:#e2e8f0;border:8px solid #334155;border-radius:50%;position:absolute;left:52%;top:154px;transform:translateX(-50%);}
+
+.stand{
+  width:16px;
+  height:170px;
+  background:#94a3b8;
+  position:absolute;
+  left:52%;
+  top:195px;
+  transform:translateX(-50%);
+}
+
+.base{
+  width:220px;
+  height:20px;
+  background:#94a3b8;
+  border-radius:20px;
+  position:absolute;
+  left:52%;
+  top:355px;
+  transform:translateX(-50%);
+}
+
+.pivot{
+  width:64px;
+  height:64px;
+  background:#e2e8f0;
+  border:8px solid #334155;
+  border-radius:50%;
+  position:absolute;
+  left:52%;
+  top:158px;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  font-weight:bold;
+  color:#081326;
+  z-index:3;
+}
+
 .side-label{
   position:absolute;
   font-weight:bold;
@@ -43,38 +267,43 @@ button{padding:15px 28px;background:#22c55e;color:white;border:none;border-radiu
   box-shadow:0 8px 20px rgba(0,0,0,.35);
   line-height:1.15;
 }
-.left-label{left:60px;top:295px;color:#ffffff;}
-.right-label{right:10px;top:75px;color:#86efac;}
-.summary-card{
-  margin-top:25px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
+
+.left-label{
+  left:45px;
+  top:300px;
+  color:#ffffff;
 }
-.mini{
-  background:#1b2f53;
-  padding:16px;
-  border-radius:14px;
-  text-align:center;
+
+.right-label{
+  right:5px;
+  top:80px;
+  color:#86efac;
 }
-.mini span{display:block;color:#b9c7dd;font-size:13px;}
-.mini strong{font-size:22px;color:#66d1ff;}
-.next-goal{
-  margin-top:15px;
-  background:#102040;
-  border-radius:14px;
-  padding:16px;
-  color:#dbeafe;
-  font-weight:bold;
-}
+
 @media(max-width:900px){
-  .grid{grid-template-columns:1fr}
-  .beam{width:340px}
-  .left-label{left:15px}
-  .right-label{right:15px}
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .beam{
+    width:340px;
+  }
+
+  .left-label{
+    left:15px;
+  }
+
+  .right-label{
+    right:15px;
+  }
+
+  .summary-card{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -89,8 +318,10 @@ button{padding:15px 28px;background:#22c55e;color:white;border:none;border-radiu
 </div>
 
 <div class="card">
+
 <h1>Cash Flow Scale</h1>
 <p class="subtitle">Enter your monthly dividends, options premium, and personal cash flow goal.</p>
+<div class="challenge-week">Week 1 • Started With $3,000</div>
 
 <div class="grid">
 
@@ -113,12 +344,20 @@ button{padding:15px 28px;background:#22c55e;color:white;border:none;border-radiu
     <div class="achieved" id="achieved">🎉 Goal Achieved</div>
   </div>
 
+  <div class="goal-summary" id="goalSummary">
+    Goal: $100/mo | Current: $0/mo | Needed: $100/mo
+  </div>
+
   <div class="progress-wrap">
     <div class="progress-bar" id="bar"></div>
   </div>
 
   <div class="details" id="details">$0.00 / $100.00</div>
   <div class="level" id="level">Level 1</div>
+
+  <div id="milestones" class="milestones">
+    ⬜ $1 &nbsp; ⬜ $5 &nbsp; ⬜ $10 &nbsp; ⬜ $25 &nbsp; ⬜ $50 &nbsp; ⬜ $75 &nbsp; ⬜ $100
+  </div>
 
   <div class="summary-card">
     <div class="mini">
@@ -129,7 +368,7 @@ button{padding:15px 28px;background:#22c55e;color:white;border:none;border-radiu
       <span>Premium</span>
       <strong id="premiumOut">$0.00</strong>
     </div>
-    <div class="mini">
+    <div class="mini" id="neededCard">
       <span>Still Needed</span>
       <strong id="neededOut">$100.00</strong>
     </div>
@@ -144,7 +383,9 @@ button{padding:15px 28px;background:#22c55e;color:white;border:none;border-radiu
   <div class="beam" id="beam"></div>
   <div class="stand"></div>
   <div class="base"></div>
-  <div class="pivot"></div>
+  <div class="pivot">
+    <span id="pivotPercent">0%</span>
+  </div>
   <div class="side-label left-label">WORKING<br>FOR MONEY</div>
   <div class="side-label right-label">MONEY WORKING<br>FOR YOU</div>
 </div>
@@ -184,8 +425,12 @@ function calculate(){
 
   document.getElementById('cashflow').innerText = `$${total.toFixed(2)}/mo`;
   document.getElementById('percent').innerText = `${progress.toFixed(1).replace('.0','')}%`;
+  document.getElementById('pivotPercent').innerText = `${progress.toFixed(0)}%`;
   document.getElementById('bar').style.width = `${progress}%`;
   document.getElementById('details').innerText = `$${total.toFixed(2)} / $${goal.toFixed(2)}`;
+
+  document.getElementById('goalSummary').innerText =
+    `Goal: $${goal.toFixed(0)}/mo | Current: $${total.toFixed(2)}/mo | Needed: $${needed.toFixed(2)}/mo`;
 
   document.getElementById('dividendOut').innerText = `$${dividends.toFixed(2)}`;
   document.getElementById('premiumOut').innerText = `$${premium.toFixed(2)}`;
@@ -193,9 +438,28 @@ function calculate(){
 
   document.getElementById('status').innerText = getStatus(progressRaw);
   document.getElementById('achieved').style.display = progressRaw >= 100 ? "block" : "none";
-  document.getElementById('nextGoal').innerText = `Next Goal After This: $${getNextGoal(goal).toLocaleString()}/month`;
+
+  document.getElementById('nextGoal').innerText =
+    `Next Goal After This: $${getNextGoal(goal).toLocaleString()}/month`;
+
+  const neededCard = document.getElementById('neededCard');
+
+  if(needed <= 10){
+    neededCard.style.background = "#14532d";
+  }
+  else{
+    neededCard.style.background = "#1b2f53";
+  }
+
+  const marks = [1,5,10,25,50,75,100];
+
+  document.getElementById("milestones").innerHTML =
+    marks.map(m =>
+      total >= m ? `✅ $${m}` : `⬜ $${m}`
+    ).join(" &nbsp; ");
 
   let level = 1;
+
   if(progress >= 100) level = 10;
   else if(progress >= 75) level = 9;
   else if(progress >= 50) level = 8;
@@ -208,7 +472,7 @@ function calculate(){
 
   document.getElementById('level').innerText = `Level ${level}`;
 
-  const tilt = -25 + (progress / 100) * 50;
+  const tilt = 35 - (progress / 100) * 70;
   document.getElementById('beam').style.transform = `translateX(-50%) rotate(${tilt}deg)`;
 }
 </script>
