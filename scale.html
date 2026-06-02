@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Cash Flow Scale</title>
+
 <style>
 body{
   background:#081326;
@@ -11,7 +12,7 @@ body{
 }
 
 .container{
-  max-width:1200px;
+  max-width:1250px;
   margin:auto;
 }
 
@@ -32,11 +33,12 @@ body{
   background:#13223d;
   padding:35px;
   border-radius:22px;
+  margin-bottom:25px;
 }
 
 h1{
   text-align:center;
-  font-size:42px;
+  font-size:44px;
   margin-bottom:8px;
 }
 
@@ -56,8 +58,8 @@ h1{
 
 .grid{
   display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:45px;
+  grid-template-columns:.85fr 1.15fr;
+  gap:50px;
   align-items:center;
 }
 
@@ -94,28 +96,28 @@ button{
 }
 
 .cashflow{
-  font-size:54px;
+  font-size:56px;
   color:#66d1ff;
   font-weight:bold;
 }
 
 .percent{
-  font-size:36px;
+  font-size:38px;
   color:#86efac;
   font-weight:bold;
   margin-top:8px;
 }
 
 .status{
-  font-size:20px;
+  font-size:21px;
   font-weight:bold;
-  color:#ffffff;
+  color:#86efac;
   margin-top:8px;
 }
 
 .achieved{
   color:#86efac;
-  font-size:24px;
+  font-size:26px;
   margin-top:10px;
   font-weight:bold;
   display:none;
@@ -157,11 +159,27 @@ button{
 }
 
 .milestones{
-  margin-top:15px;
+  margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+}
+
+.milestone-pill{
+  background:#102040;
+  border:1px solid rgba(255,255,255,.12);
+  padding:8px 12px;
+  border-radius:999px;
   color:#dbeafe;
-  font-size:16px;
-  line-height:1.8;
-  text-align:center;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.milestone-pill.done{
+  background:#14532d;
+  border-color:#22c55e;
+  color:#86efac;
 }
 
 .summary-card{
@@ -200,60 +218,66 @@ button{
 }
 
 .scale-area{
-  height:420px;
+  height:470px;
   position:relative;
 }
 
 .beam{
-  width:520px;
-  height:16px;
+  width:610px;
+  height:18px;
   background:#cbd5e1;
   border-radius:20px;
   position:absolute;
-  left:52%;
-  top:190px;
+  left:56%;
+  top:225px;
   transform:translateX(-50%) rotate(35deg);
   transition:.5s;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
 
 .stand{
-  width:16px;
-  height:170px;
+  width:18px;
+  height:185px;
   background:#94a3b8;
   position:absolute;
-  left:52%;
-  top:195px;
+  left:56%;
+  top:230px;
   transform:translateX(-50%);
 }
 
 .base{
-  width:220px;
-  height:20px;
+  width:250px;
+  height:22px;
   background:#94a3b8;
   border-radius:20px;
   position:absolute;
-  left:52%;
-  top:355px;
+  left:56%;
+  top:405px;
   transform:translateX(-50%);
 }
 
 .pivot{
-  width:64px;
-  height:64px;
+  width:68px;
+  height:68px;
   background:#e2e8f0;
   border:8px solid #334155;
   border-radius:50%;
   position:absolute;
-  left:52%;
-  top:158px;
+  left:56%;
+  top:190px;
   transform:translateX(-50%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:15px;
-  font-weight:bold;
-  color:#081326;
   z-index:3;
+}
+
+.pivot-percent{
+  position:absolute;
+  left:56%;
+  top:135px;
+  transform:translateX(-50%);
+  color:#86efac;
+  font-size:34px;
+  font-weight:bold;
+  text-shadow:0 8px 20px rgba(0,0,0,.5);
 }
 
 .side-label{
@@ -262,31 +286,65 @@ button{
   font-size:18px;
   text-align:center;
   background:#081326;
-  padding:10px 14px;
+  padding:11px 15px;
   border-radius:12px;
   box-shadow:0 8px 20px rgba(0,0,0,.35);
   line-height:1.15;
 }
 
 .left-label{
-  left:45px;
-  top:300px;
+  left:35px;
+  top:340px;
   color:#ffffff;
 }
 
 .right-label{
-  right:5px;
-  top:80px;
+  right:-10px;
+  top:105px;
   color:#86efac;
 }
 
-@media(max-width:900px){
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+th,td{
+  padding:14px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  text-align:left;
+}
+
+th{
+  color:#66d1ff;
+}
+
+.portfolio-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.portfolio-total{
+  color:#86efac;
+  font-weight:bold;
+  font-size:20px;
+}
+
+@media(max-width:950px){
   .grid{
     grid-template-columns:1fr;
   }
 
   .beam{
-    width:340px;
+    width:380px;
+    left:50%;
+  }
+
+  .stand,.base,.pivot,.pivot-percent{
+    left:50%;
   }
 
   .left-label{
@@ -299,6 +357,10 @@ button{
 
   .summary-card{
     grid-template-columns:1fr;
+  }
+
+  .portfolio-title{
+    display:block;
   }
 }
 </style>
@@ -355,9 +417,7 @@ button{
   <div class="details" id="details">$0.00 / $100.00</div>
   <div class="level" id="level">Level 1</div>
 
-  <div id="milestones" class="milestones">
-    ⬜ $1 &nbsp; ⬜ $5 &nbsp; ⬜ $10 &nbsp; ⬜ $25 &nbsp; ⬜ $50 &nbsp; ⬜ $75 &nbsp; ⬜ $100
-  </div>
+  <div id="milestones" class="milestones"></div>
 
   <div class="summary-card">
     <div class="mini">
@@ -380,18 +440,58 @@ button{
 </div>
 
 <div class="scale-area">
+  <div class="pivot-percent" id="pivotPercent">0%</div>
   <div class="beam" id="beam"></div>
   <div class="stand"></div>
   <div class="base"></div>
-  <div class="pivot">
-    <span id="pivotPercent">0%</span>
-  </div>
+  <div class="pivot"></div>
   <div class="side-label left-label">WORKING<br>FOR MONEY</div>
   <div class="side-label right-label">MONEY WORKING<br>FOR YOU</div>
 </div>
 
 </div>
 </div>
+
+<div class="card">
+  <div class="portfolio-title">
+    <h2>Current Portfolio</h2>
+    <div class="portfolio-total" id="portfolioTotal">Total Monthly Income: $0.00</div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Asset</th>
+      <th>Shares / Amount</th>
+      <th>Cash Flow Source</th>
+      <th>Monthly Income</th>
+    </tr>
+    <tr>
+      <td>PFE</td>
+      <td>100 Shares</td>
+      <td>Dividend + covered call premium</td>
+      <td id="pfeIncome">$0.00</td>
+    </tr>
+    <tr>
+      <td>O</td>
+      <td>Building position</td>
+      <td>Monthly dividend</td>
+      <td>$0.00</td>
+    </tr>
+    <tr>
+      <td>JEPI</td>
+      <td>Future unlock</td>
+      <td>Monthly income ETF</td>
+      <td>$0.00</td>
+    </tr>
+    <tr>
+      <td>JEPQ</td>
+      <td>Future unlock</td>
+      <td>Monthly income ETF</td>
+      <td>$0.00</td>
+    </tr>
+  </table>
+</div>
+
 </div>
 
 <script>
@@ -436,6 +536,12 @@ function calculate(){
   document.getElementById('premiumOut').innerText = `$${premium.toFixed(2)}`;
   document.getElementById('neededOut').innerText = `$${needed.toFixed(2)}`;
 
+  document.getElementById('portfolioTotal').innerText =
+    `Total Monthly Income: $${total.toFixed(2)}`;
+
+  document.getElementById('pfeIncome').innerText =
+    `$${total.toFixed(2)}`;
+
   document.getElementById('status').innerText = getStatus(progressRaw);
   document.getElementById('achieved').style.display = progressRaw >= 100 ? "block" : "none";
 
@@ -454,9 +560,10 @@ function calculate(){
   const marks = [1,5,10,25,50,75,100];
 
   document.getElementById("milestones").innerHTML =
-    marks.map(m =>
-      total >= m ? `✅ $${m}` : `⬜ $${m}`
-    ).join(" &nbsp; ");
+    marks.map(m => {
+      const done = total >= m;
+      return `<span class="milestone-pill ${done ? 'done' : ''}">${done ? '✓' : ''} $${m}</span>`;
+    }).join("");
 
   let level = 1;
 
@@ -475,6 +582,8 @@ function calculate(){
   const tilt = 35 - (progress / 100) * 70;
   document.getElementById('beam').style.transform = `translateX(-50%) rotate(${tilt}deg)`;
 }
+
+calculate();
 </script>
 
 </body>
