@@ -579,7 +579,7 @@ function calculate(){
 
   document.getElementById('level').innerText = `Level ${level}`;
 
-  const tilt = 35 - (progress / 100) * 70;
+ const tilt = -35 + (progress / 100) * 70;
   document.getElementById('beam').style.transform = `translateX(-50%) rotate(${tilt}deg)`;
 }
 
