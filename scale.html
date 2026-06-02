@@ -340,7 +340,7 @@ th{
 @media(max-width:900px){
 
   body{
-    padding:14px;
+    padding:12px;
   }
 
   .container{
@@ -349,8 +349,13 @@ th{
 
   .nav{
     flex-direction:column;
-    gap:12px;
+    gap:10px;
     text-align:center;
+    margin-bottom:20px;
+  }
+
+  .nav strong{
+    font-size:16px;
   }
 
   .nav a{
@@ -359,8 +364,9 @@ th{
   }
 
   .card{
-    padding:24px;
+    padding:20px;
     border-radius:18px;
+    margin-bottom:18px;
   }
 
   h1{
@@ -369,125 +375,157 @@ th{
 
   .subtitle{
     font-size:14px;
+    margin-bottom:10px;
   }
 
   .challenge-week{
     font-size:16px;
+    margin-bottom:20px;
   }
 
   .grid{
     grid-template-columns:1fr;
-    gap:10px;
+    gap:6px;
+  }
+
+  label{
+    font-size:13px;
+    margin-top:8px;
   }
 
   input{
-    font-size:16px;
-    padding:13px;
+    font-size:15px;
+    padding:10px;
   }
 
   button{
     width:100%;
+    padding:12px;
+  }
+
+  .result-box{
+    margin-top:16px;
   }
 
   .percent{
-    font-size:44px;
+    font-size:42px;
   }
 
   .cashflow{
-    font-size:38px;
+    font-size:34px;
   }
 
   .status{
-    font-size:17px;
+    font-size:16px;
   }
 
   .goal-summary{
-    font-size:14px;
+    font-size:13px;
     line-height:1.4;
+    margin-top:10px;
+  }
+
+  .progress-wrap{
+    height:24px;
+    margin:12px 0 8px;
+  }
+
+  .details,
+  .level{
+    font-size:15px;
+  }
+
+  .milestones{
+    gap:6px;
+    margin-top:12px;
+  }
+
+  .milestone-pill{
+    font-size:11px;
+    padding:6px 9px;
   }
 
   .summary-card{
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:16px;
+  }
+
+  .mini{
+    padding:10px;
+  }
+
+  .mini span{
+    font-size:11px;
+  }
+
+  .mini strong{
+    font-size:16px;
+  }
+
+  .next-goal{
+    font-size:13px;
+    padding:12px;
   }
 
   .scale-area{
-    height:320px;
-    margin-top:18px;
+    height:250px;
+    margin-top:10px;
     overflow:hidden;
   }
 
   .beam{
-    width:255px;
-    height:14px;
+    width:240px;
+    height:12px;
     left:50%;
-    top:150px;
+    top:120px;
   }
 
   .stand{
     left:50%;
-    top:155px;
-    height:120px;
-    width:14px;
+    top:125px;
+    height:95px;
+    width:12px;
   }
 
   .base{
     left:50%;
-    top:270px;
-    width:160px;
-    height:18px;
+    top:215px;
+    width:140px;
+    height:15px;
   }
 
   .pivot{
     left:50%;
-    top:124px;
-    width:54px;
-    height:54px;
-    border-width:7px;
+    top:98px;
+    width:48px;
+    height:48px;
+    border-width:6px;
   }
 
   .pivot-percent{
     left:50%;
-    top:78px;
-    font-size:42px;
+    top:55px;
+    font-size:34px;
   }
 
   .left-label{
-    left:15px;
-    top:245px;
-    font-size:11px;
-    padding:8px 10px;
+    left:12px;
+    top:195px;
+    font-size:10px;
+    padding:7px 9px;
   }
 
   .right-label{
-    right:15px;
-    top:58px;
-    font-size:11px;
-    padding:8px 10px;
+    right:12px;
+    top:38px;
+    font-size:10px;
+    padding:7px 9px;
   }
 
-  .milestones{
-    justify-content:center;
-  }
-
-  .milestone-pill{
-    font-size:12px;
-    padding:7px 10px;
-  }
-
-  .portfolio-title{
-    display:block;
-  }
-
-  .portfolio-total{
-    margin-top:10px;
-    font-size:16px;
-  }
-
+  .portfolio-title,
   table{
-    font-size:13px;
-    display:block;
-    overflow-x:auto;
-    white-space:nowrap;
+    display:none;
   }
 }
 </style>
@@ -579,7 +617,7 @@ th{
 </div>
 </div>
 
-<div class="card">
+<div class="card portfolio-card">
   <div class="portfolio-title">
     <h2>Current Portfolio</h2>
     <div class="portfolio-total" id="portfolioTotal">Total Monthly Income: $0.00</div>
