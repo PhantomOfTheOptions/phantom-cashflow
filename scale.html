@@ -12,10 +12,7 @@ body{
   padding:30px;
 }
 
-.container{
-  max-width:1250px;
-  margin:auto;
-}
+.container{max-width:1250px;margin:auto;}
 
 .nav{
   display:flex;
@@ -38,25 +35,9 @@ body{
   margin-bottom:25px;
 }
 
-h1{
-  text-align:center;
-  font-size:44px;
-  margin-bottom:8px;
-}
-
-.subtitle{
-  text-align:center;
-  color:#b9c7dd;
-  margin-bottom:15px;
-}
-
-.challenge-week{
-  text-align:center;
-  color:#86efac;
-  font-size:20px;
-  font-weight:bold;
-  margin-bottom:30px;
-}
+h1{text-align:center;font-size:44px;margin-bottom:8px;}
+.subtitle{text-align:center;color:#b9c7dd;margin-bottom:15px;}
+.challenge-week{text-align:center;color:#86efac;font-size:20px;font-weight:bold;margin-bottom:30px;}
 
 .grid{
   display:grid;
@@ -65,21 +46,8 @@ h1{
   align-items:center;
 }
 
-label{
-  display:block;
-  margin:12px 0 6px;
-  color:#b9c7dd;
-  font-weight:bold;
-}
-
-input{
-  padding:15px;
-  width:100%;
-  border-radius:10px;
-  border:none;
-  font-size:18px;
-  box-sizing:border-box;
-}
+label{display:block;margin:12px 0 6px;color:#b9c7dd;font-weight:bold;}
+input{padding:15px;width:100%;border-radius:10px;border:none;font-size:18px;box-sizing:border-box;}
 
 button{
   padding:15px 28px;
@@ -92,39 +60,11 @@ button{
   cursor:pointer;
 }
 
-.result-box{
-  text-align:center;
-  margin-top:25px;
-}
-
-.percent{
-  font-size:48px;
-  color:#86efac;
-  font-weight:bold;
-  margin-top:8px;
-}
-
-.cashflow{
-  font-size:46px;
-  color:#66d1ff;
-  font-weight:bold;
-  margin-top:4px;
-}
-
-.status{
-  font-size:21px;
-  font-weight:bold;
-  color:#86efac;
-  margin-top:8px;
-}
-
-.achieved{
-  color:#86efac;
-  font-size:26px;
-  margin-top:10px;
-  font-weight:bold;
-  display:none;
-}
+.result-box{text-align:center;margin-top:25px;}
+.percent{font-size:48px;color:#86efac;font-weight:bold;}
+.cashflow{font-size:46px;color:#66d1ff;font-weight:bold;margin-top:4px;}
+.status{font-size:21px;font-weight:bold;color:#86efac;margin-top:8px;}
+.achieved{color:#86efac;font-size:26px;margin-top:10px;font-weight:bold;display:none;}
 
 .goal-summary{
   margin-top:18px;
@@ -149,17 +89,8 @@ button{
   background:linear-gradient(90deg,#22c55e,#38bdf8);
 }
 
-.details{
-  color:#dbeafe;
-  font-size:18px;
-}
-
-.level{
-  font-size:20px;
-  font-weight:bold;
-  margin-top:8px;
-  color:#ffffff;
-}
+.details{color:#dbeafe;font-size:18px;}
+.level{font-size:20px;font-weight:bold;margin-top:8px;color:#ffffff;}
 
 .milestones{
   margin-top:18px;
@@ -199,16 +130,8 @@ button{
   text-align:center;
 }
 
-.mini span{
-  display:block;
-  color:#b9c7dd;
-  font-size:13px;
-}
-
-.mini strong{
-  font-size:22px;
-  color:#66d1ff;
-}
+.mini span{display:block;color:#b9c7dd;font-size:13px;}
+.mini strong{font-size:22px;color:#66d1ff;}
 
 .next-goal{
   margin-top:15px;
@@ -296,235 +219,182 @@ button{
   line-height:1.15;
 }
 
-.left-label{
-  left:45px;
-  top:335px;
-  color:#ffffff;
-}
+.left-label{left:45px;top:335px;color:#ffffff;}
+.right-label{right:10px;top:105px;color:#86efac;}
 
-.right-label{
-  right:10px;
-  top:105px;
-  color:#86efac;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:15px;
-}
-
-th,td{
-  padding:14px;
-  border-bottom:1px solid rgba(255,255,255,.12);
-  text-align:left;
-}
-
-th{
-  color:#66d1ff;
-}
-
-.portfolio-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-}
-
-.portfolio-total{
-  color:#86efac;
-  font-weight:bold;
-  font-size:20px;
-}
+.portfolio-card{display:block;}
 
 @media(max-width:900px){
 
-  body{
-    padding:12px;
-  }
-
-  .container{
-    max-width:100%;
-  }
+  body{padding:10px;}
+  .container{max-width:100%;}
 
   .nav{
     flex-direction:column;
-    gap:10px;
+    gap:8px;
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:14px;
   }
 
-  .nav strong{
-    font-size:16px;
-  }
-
-  .nav a{
-    margin:0 8px;
-    font-size:14px;
-  }
+  .nav strong{font-size:15px;}
+  .nav a{margin:0 8px;font-size:13px;}
 
   .card{
-    padding:20px;
-    border-radius:18px;
-    margin-bottom:18px;
+    padding:14px;
+    border-radius:16px;
+    margin-bottom:14px;
   }
 
   h1{
-    font-size:32px;
+    font-size:28px;
+    margin-bottom:4px;
   }
 
-  .subtitle{
-    font-size:14px;
-    margin-bottom:10px;
-  }
-
-  .challenge-week{
-    font-size:16px;
-    margin-bottom:20px;
+  .subtitle,
+  .challenge-week,
+  .goal-summary,
+  .details,
+  .next-goal{
+    display:none;
   }
 
   .grid{
     grid-template-columns:1fr;
-    gap:6px;
+    gap:0;
   }
 
   label{
-    font-size:13px;
-    margin-top:8px;
+    font-size:12px;
+    margin-top:6px;
+    margin-bottom:4px;
   }
 
   input{
-    font-size:15px;
-    padding:10px;
+    font-size:14px;
+    padding:8px;
+    border-radius:8px;
   }
 
   button{
     width:100%;
-    padding:12px;
-  }
-
-  .result-box{
-    margin-top:16px;
-  }
-
-  .percent{
-    font-size:42px;
-  }
-
-  .cashflow{
-    font-size:34px;
-  }
-
-  .status{
-    font-size:16px;
-  }
-
-  .goal-summary{
-    font-size:13px;
-    line-height:1.4;
+    padding:10px;
     margin-top:10px;
   }
 
-  .progress-wrap{
-    height:24px;
-    margin:12px 0 8px;
+  .result-box{
+    margin-top:10px;
   }
 
-  .details,
+  .percent{
+    font-size:36px;
+    line-height:1;
+  }
+
+  .cashflow{
+    font-size:30px;
+    line-height:1.05;
+  }
+
+  .status{
+    font-size:14px;
+    margin-top:5px;
+  }
+
+  .progress-wrap{
+    height:20px;
+    margin:10px 0 6px;
+  }
+
   .level{
-    font-size:15px;
+    font-size:14px;
+    margin-top:4px;
   }
 
   .milestones{
-    gap:6px;
-    margin-top:12px;
+    gap:5px;
+    margin-top:8px;
   }
 
   .milestone-pill{
-    font-size:11px;
-    padding:6px 9px;
+    font-size:10px;
+    padding:5px 8px;
   }
 
   .summary-card{
     grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-top:16px;
+    gap:6px;
+    margin-top:10px;
   }
 
   .mini{
-    padding:10px;
+    padding:8px 4px;
+    border-radius:10px;
   }
 
   .mini span{
-    font-size:11px;
+    font-size:10px;
   }
 
   .mini strong{
-    font-size:16px;
-  }
-
-  .next-goal{
-    font-size:13px;
-    padding:12px;
+    font-size:14px;
   }
 
   .scale-area{
-    height:250px;
-    margin-top:10px;
+    height:200px;
+    margin-top:6px;
     overflow:hidden;
   }
 
   .beam{
-    width:240px;
-    height:12px;
+    width:210px;
+    height:10px;
     left:50%;
-    top:120px;
+    top:95px;
   }
 
   .stand{
     left:50%;
-    top:125px;
-    height:95px;
-    width:12px;
+    top:100px;
+    height:78px;
+    width:10px;
   }
 
   .base{
     left:50%;
-    top:215px;
-    width:140px;
-    height:15px;
+    top:174px;
+    width:120px;
+    height:13px;
   }
 
   .pivot{
     left:50%;
-    top:98px;
-    width:48px;
-    height:48px;
-    border-width:6px;
+    top:76px;
+    width:40px;
+    height:40px;
+    border-width:5px;
   }
 
   .pivot-percent{
     left:50%;
-    top:55px;
-    font-size:34px;
+    top:38px;
+    font-size:28px;
   }
 
   .left-label{
-    left:12px;
-    top:195px;
-    font-size:10px;
-    padding:7px 9px;
+    left:10px;
+    top:150px;
+    font-size:9px;
+    padding:6px 8px;
   }
 
   .right-label{
-    right:12px;
-    top:38px;
-    font-size:10px;
-    padding:7px 9px;
+    right:10px;
+    top:24px;
+    font-size:9px;
+    padding:6px 8px;
   }
 
-  .portfolio-title,
-  table{
+  .portfolio-card{
     display:none;
   }
 }
@@ -594,7 +464,7 @@ th{
       <strong id="premiumOut">$0.00</strong>
     </div>
     <div class="mini" id="neededCard">
-      <span>Still Needed</span>
+      <span>Needed</span>
       <strong id="neededOut">$100.00</strong>
     </div>
   </div>
@@ -618,43 +488,8 @@ th{
 </div>
 
 <div class="card portfolio-card">
-  <div class="portfolio-title">
-    <h2>Current Portfolio</h2>
-    <div class="portfolio-total" id="portfolioTotal">Total Monthly Income: $0.00</div>
-  </div>
-
-  <table>
-    <tr>
-      <th>Asset</th>
-      <th>Shares / Amount</th>
-      <th>Cash Flow Source</th>
-      <th>Monthly Income</th>
-    </tr>
-    <tr>
-      <td>PFE</td>
-      <td>100 Shares</td>
-      <td>Dividend + covered call premium</td>
-      <td id="pfeIncome">$0.00</td>
-    </tr>
-    <tr>
-      <td>O</td>
-      <td>Building position</td>
-      <td>Monthly dividend</td>
-      <td>$0.00</td>
-    </tr>
-    <tr>
-      <td>JEPI</td>
-      <td>Future unlock</td>
-      <td>Monthly income ETF</td>
-      <td>$0.00</td>
-    </tr>
-    <tr>
-      <td>JEPQ</td>
-      <td>Future unlock</td>
-      <td>Monthly income ETF</td>
-      <td>$0.00</td>
-    </tr>
-  </table>
+  <h2>Current Portfolio</h2>
+  <p>This section is hidden on mobile. View full details on the Scoreboard page.</p>
 </div>
 
 </div>
@@ -701,12 +536,6 @@ function calculate(){
   document.getElementById('premiumOut').innerText = `$${premium.toFixed(2)}`;
   document.getElementById('neededOut').innerText = `$${needed.toFixed(2)}`;
 
-  document.getElementById('portfolioTotal').innerText =
-    `Total Monthly Income: $${total.toFixed(2)}`;
-
-  document.getElementById('pfeIncome').innerText =
-    `$${total.toFixed(2)}`;
-
   document.getElementById('status').innerText = getStatus(progressRaw);
   document.getElementById('achieved').style.display = progressRaw >= 100 ? "block" : "none";
 
@@ -714,13 +543,7 @@ function calculate(){
     `Next Goal After This: $${getNextGoal(goal).toLocaleString()}/month`;
 
   const neededCard = document.getElementById('neededCard');
-
-  if(needed <= 10){
-    neededCard.style.background = "#14532d";
-  }
-  else{
-    neededCard.style.background = "#1b2f53";
-  }
+  neededCard.style.background = needed <= 10 ? "#14532d" : "#1b2f53";
 
   const marks = [1,5,10,25,50,75,100];
 
@@ -731,7 +554,6 @@ function calculate(){
     }).join("");
 
   let level = 1;
-
   if(progress >= 100) level = 10;
   else if(progress >= 75) level = 9;
   else if(progress >= 50) level = 8;
