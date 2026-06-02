@@ -4,15 +4,29 @@
 <title>Cash Flow Scale</title>
 <style>
 body{background:#081326;color:white;font-family:Arial;padding:30px;text-align:center;}
-.container{max-width:900px;margin:auto;}
+.container{max-width:1100px;margin:auto;}
 .nav{display:flex;justify-content:space-between;margin-bottom:40px;}
 .nav a{color:white;text-decoration:none;margin-left:20px;font-weight:bold;}
 .card{background:#13223d;padding:30px;border-radius:20px;}
-input{padding:14px;width:80%;margin:10px;border-radius:10px;border:none;font-size:18px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;}
+input{padding:14px;width:90%;margin:10px;border-radius:10px;border:none;font-size:18px;}
 button{padding:14px 25px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;margin-top:15px;}
 .result{font-size:46px;color:#66d1ff;margin:20px;}
 .progress-wrap{background:#1f2937;border-radius:30px;overflow:hidden;height:30px;margin:20px;}
 .progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#22c55e,#38bdf8);}
+.scale-area{height:320px;position:relative;}
+.beam{
+  width:420px;height:14px;background:#cbd5e1;border-radius:20px;
+  position:absolute;left:50%;top:135px;transform:translateX(-50%) rotate(-18deg);
+  transition:.5s;
+}
+.stand{width:14px;height:145px;background:#94a3b8;position:absolute;left:50%;top:140px;transform:translateX(-50%);}
+.base{width:180px;height:18px;background:#94a3b8;border-radius:20px;position:absolute;left:50%;top:275px;transform:translateX(-50%);}
+.pivot{width:38px;height:38px;background:#e2e8f0;border:8px solid #334155;border-radius:50%;position:absolute;left:50%;top:120px;transform:translateX(-50%);}
+.side-label{position:absolute;font-weight:bold;font-size:18px;}
+.left-label{left:80px;top:190px;}
+.right-label{right:70px;top:70px;color:#86efac;}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.beam{width:300px}.left-label{left:20px}.right-label{right:20px}}
 </style>
 </head>
 <body>
@@ -30,24 +44,38 @@ button{padding:14px 25px;background:#22c55e;color:white;border:none;border-radiu
 
 <div class="card">
 <h1>Cash Flow Scale</h1>
-<p>Enter your monthly dividends and options premium.</p>
+<p>See how close your cash flow is to your next goal.</p>
 
-<input id="dividends" type="number" placeholder="Monthly Dividends">
-<input id="premium" type="number" placeholder="Monthly Options Premium">
-<input id="goal" type="number" placeholder="Monthly Goal" value="100">
+<div class="grid">
 
-<br>
-<button onclick="calculate()">Calculate</button>
+<div>
+  <input id="dividends" type="number" placeholder="Monthly Dividends">
+  <input id="premium" type="number" placeholder="Monthly Options Premium">
+  <input id="goal" type="number" placeholder="Monthly Goal" value="100">
 
-<div class="result" id="cashflow">$0.00/mo</div>
+  <br>
+  <button onclick="calculate()">Calculate</button>
 
-<div class="progress-wrap">
-  <div class="progress-bar" id="bar"></div>
+  <div class="result" id="cashflow">$0.00/mo</div>
+
+  <div class="progress-wrap">
+    <div class="progress-bar" id="bar"></div>
+  </div>
+
+  <p id="details">$0.00 / $100.00</p>
+  <p id="level">Level 1</p>
 </div>
 
-<p id="details">$0.00 / $100.00</p>
-<p id="level">Level 1</p>
+<div class="scale-area">
+  <div class="beam" id="beam"></div>
+  <div class="stand"></div>
+  <div class="base"></div>
+  <div class="pivot"></div>
+  <div class="side-label left-label">Working<br>For Money</div>
+  <div class="side-label right-label">Money<br>Working For You</div>
+</div>
 
+</div>
 </div>
 </div>
 
@@ -65,17 +93,20 @@ function calculate(){
   document.getElementById('details').innerText = `$${total.toFixed(2)} / $${goal.toFixed(2)}`;
 
   let level = 1;
-  if(total >= 100) level = 10;
-  else if(total >= 75) level = 9;
-  else if(total >= 50) level = 8;
-  else if(total >= 40) level = 7;
-  else if(total >= 25) level = 6;
-  else if(total >= 15) level = 5;
-  else if(total >= 10) level = 4;
-  else if(total >= 5) level = 3;
-  else if(total >= 1) level = 2;
+  if(progress >= 100) level = 10;
+  else if(progress >= 75) level = 9;
+  else if(progress >= 50) level = 8;
+  else if(progress >= 40) level = 7;
+  else if(progress >= 25) level = 6;
+  else if(progress >= 15) level = 5;
+  else if(progress >= 10) level = 4;
+  else if(progress >= 5) level = 3;
+  else if(progress >= 1) level = 2;
 
   document.getElementById('level').innerText = `Level ${level}`;
+
+  const tilt = -18 + (progress / 100) * 36;
+  document.getElementById('beam').style.transform = `translateX(-50%) rotate(${tilt}deg)`;
 }
 </script>
 
