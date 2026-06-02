@@ -5,347 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  background:#081326;
-  color:white;
-  font-family:Arial, sans-serif;
-  padding:30px;
-}
-
-.container{
-  max-width:1150px;
-  margin:auto;
-}
-
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:35px;
-}
-
-.nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:20px;
-  font-weight:bold;
-}
-
-.hero,
-.card{
-  background:#13223d;
-  border-radius:24px;
-}
-
-.hero{
-  padding:45px;
-  text-align:center;
-  margin-bottom:25px;
-}
-
-h1{
-  font-size:64px;
-  margin:0 0 12px;
-}
-
-h2{
-  color:#66d1ff;
-  margin:10px 0 18px;
-}
-
-.description{
-  max-width:760px;
-  margin:22px auto;
-  color:#dbeafe;
-  font-size:20px;
-  line-height:1.5;
-}
-
-.social-proof{
-  display:inline-block;
-  background:#102040;
-  border:1px solid rgba(134,239,172,.25);
-  color:#86efac;
-  font-weight:bold;
-  padding:10px 16px;
-  border-radius:999px;
-  margin-top:10px;
-}
-
-.percent{
-  font-size:64px;
-  color:#86efac;
-  font-weight:bold;
-  margin-top:25px;
-}
-
-.progress-wrap{
-  background:#1f2937;
-  border-radius:30px;
-  overflow:hidden;
-  height:34px;
-  margin:22px auto 12px;
-  max-width:780px;
-}
-
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#22c55e,#38bdf8);
-}
-
-.progress-text{
-  color:#dbeafe;
-  font-weight:bold;
-}
-
-.button-row{
-  margin-top:28px;
-}
-
-.button{
-  display:inline-block;
-  margin:8px;
-  padding:16px 30px;
-  background:#22c55e;
-  color:white;
-  text-decoration:none;
-  border-radius:12px;
-  font-weight:bold;
-}
-
-.secondary{
-  background:#1b2f53;
-  border:1px solid rgba(255,255,255,.15);
-}
-
-.card{
-  padding:28px;
-  margin-bottom:25px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:25px;
-  margin-bottom:25px;
-}
-
-.three-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-bottom:25px;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-
-.stat,
-.info-box,
-.rule,
-.update-item{
-  background:#1b2f53;
-  padding:18px;
-  border-radius:14px;
-}
-
-.stat span,
-.info-box span,
-.update-item span{
-  display:block;
-  color:#b9c7dd;
-  font-size:14px;
-}
-
-.stat strong,
-.info-box strong,
-.update-item strong{
-  display:block;
-  color:#66d1ff;
-  font-size:28px;
-  margin-top:5px;
-}
-
-.counter-card{
-  border:1px solid rgba(134,239,172,.25);
-}
-
-.counter-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-
-.latest-update{
-  border:1px solid rgba(134,239,172,.25);
-}
-
-.update-banner{
-  background:#1b2f53;
-  color:#86efac;
-  text-align:center;
-  padding:12px;
-  border-radius:12px;
-  font-weight:bold;
-  margin-bottom:20px;
-}
-
-.update-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.update-note{
-  margin-top:20px;
-  color:#dbeafe;
-  line-height:1.5;
-}
-
-.holdings-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.trade-card{
-  border-left:5px solid #22c55e;
-}
-
-.trade-details{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-top:15px;
-}
-
-.email-box input{
-  width:100%;
-  box-sizing:border-box;
-  padding:15px;
-  border:none;
-  border-radius:10px;
-  font-size:17px;
-  margin:12px 0;
-}
-
-.email-box button{
-  width:100%;
-  padding:15px;
-  background:#22c55e;
-  color:white;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.milestones{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:18px;
-}
-
-.pill{
-  background:#102040;
-  border:1px solid rgba(255,255,255,.12);
-  padding:10px 14px;
-  border-radius:999px;
-  color:#dbeafe;
-  font-weight:bold;
-}
-
-.pill.done{
-  background:#14532d;
-  border-color:#22c55e;
-  color:#86efac;
-}
-
-.rules{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-top:18px;
-}
-
-.disclaimer{
-  border:1px solid rgba(255,255,255,.15);
-  background:#101b31;
-}
-
-.disclaimer h2{
-  color:#fbbf24;
-}
-
-.footer{
-  text-align:center;
-  color:#8fa6c7;
-  font-size:14px;
-  margin-top:25px;
-  line-height:1.5;
-}
+body{background:#081326;color:white;font-family:Arial,sans-serif;padding:30px;}
+.container{max-width:1150px;margin:auto;}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px;}
+.nav a{color:white;text-decoration:none;margin-left:20px;font-weight:bold;}
+.hero,.card{background:#13223d;border-radius:24px;}
+.hero{padding:45px;text-align:center;margin-bottom:25px;}
+h1{font-size:64px;margin:0 0 12px;}
+h2{color:#66d1ff;margin:10px 0 18px;}
+.description{max-width:760px;margin:22px auto;color:#dbeafe;font-size:20px;line-height:1.5;}
+.social-proof{display:inline-block;background:#102040;border:1px solid rgba(134,239,172,.25);color:#86efac;font-weight:bold;padding:10px 16px;border-radius:999px;margin-top:10px;}
+.percent{font-size:64px;color:#86efac;font-weight:bold;margin-top:25px;}
+.progress-wrap{background:#1f2937;border-radius:30px;overflow:hidden;height:34px;margin:22px auto 12px;max-width:780px;}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#22c55e,#38bdf8);}
+.progress-text{color:#dbeafe;font-weight:bold;}
+.button-row{margin-top:28px;}
+.button{display:inline-block;margin:8px;padding:16px 30px;background:#22c55e;color:white;text-decoration:none;border-radius:12px;font-weight:bold;}
+.secondary{background:#1b2f53;border:1px solid rgba(255,255,255,.15);}
+.card{padding:28px;margin-bottom:25px;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px;margin-bottom:25px;}
+.three-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:25px;}
+.info-box,.rule,.update-item{background:#1b2f53;padding:18px;border-radius:14px;}
+.info-box span,.update-item span{display:block;color:#b9c7dd;font-size:14px;}
+.info-box strong,.update-item strong{display:block;color:#66d1ff;font-size:28px;margin-top:5px;}
+.counter-card,.latest-update{border:1px solid rgba(134,239,172,.25);}
+.counter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.update-banner{background:#1b2f53;color:#86efac;text-align:center;padding:12px;border-radius:12px;font-weight:bold;margin-bottom:20px;}
+.update-note{margin-top:20px;color:#dbeafe;line-height:1.5;}
+.holdings-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;}
+.trade-card{border-left:5px solid #22c55e;}
+.trade-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:15px;}
+.email-box input{width:100%;box-sizing:border-box;padding:15px;border:none;border-radius:10px;font-size:17px;margin:12px 0;}
+.email-box button{width:100%;padding:15px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer;}
+.milestones{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+.pill{background:#102040;border:1px solid rgba(255,255,255,.12);padding:10px 14px;border-radius:999px;color:#dbeafe;font-weight:bold;}
+.pill.done{background:#14532d;border-color:#22c55e;color:#86efac;}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;}
+.disclaimer{border:1px solid rgba(255,255,255,.15);background:#101b31;}
+.disclaimer h2{color:#fbbf24;}
+.footer{text-align:center;color:#8fa6c7;font-size:14px;margin-top:25px;line-height:1.5;}
 
 @media(max-width:900px){
-  body{
-    padding:12px;
-  }
-
-  .nav{
-    flex-direction:column;
-    gap:10px;
-    text-align:center;
-  }
-
-  .nav a{
-    margin:0 8px;
-    font-size:14px;
-  }
-
-  .hero{
-    padding:28px 18px;
-  }
-
-  h1{
-    font-size:40px;
-  }
-
-  .description{
-    font-size:16px;
-  }
-
-  .percent{
-    font-size:48px;
-  }
-
-  .grid,
-  .three-grid,
-  .counter-grid,
-  .update-grid,
-  .holdings-grid,
-  .trade-details,
-  .rules{
-    grid-template-columns:1fr;
-  }
-
-  .stats{
-    grid-template-columns:1fr;
-  }
-
-  .button{
-    display:block;
-  }
+  body{padding:12px;}
+  .nav{flex-direction:column;gap:10px;text-align:center;}
+  .nav a{margin:0 8px;font-size:14px;}
+  .hero{padding:28px 18px;}
+  h1{font-size:40px;}
+  .description{font-size:16px;}
+  .percent{font-size:48px;}
+  .grid,.three-grid,.counter-grid,.holdings-grid,.trade-layout,.rules{grid-template-columns:1fr;}
+  .button{display:block;}
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
 <div class="nav">
@@ -361,9 +75,7 @@ h2{
   <h1>Buying Cash Flow</h1>
   <h2>Starting With $3,000</h2>
 
-  <div class="social-proof">
-    Join 12 investors following the challenge
-  </div>
+  <div class="social-proof">Join 12 investors following the challenge</div>
 
   <p class="description">
     I am documenting the journey of turning $3,000 into $100/month of recurring cash flow using dividend income and options premium.
@@ -394,15 +106,17 @@ h2{
       <span>Trades Made</span>
       <strong>0</strong>
     </div>
-
     <div class="info-box">
       <span>Dividends Collected</span>
       <strong>$0.00</strong>
     </div>
-
     <div class="info-box">
       <span>Option Premium Earned</span>
       <strong>$0.00</strong>
+    </div>
+    <div class="info-box">
+      <span>Portfolio Yield</span>
+      <strong>0.0%</strong>
     </div>
   </div>
 </div>
@@ -414,61 +128,12 @@ h2{
     Week 1 • Challenge Started With $3,000
   </div>
 
-  <div class="update-grid">
-    <div class="update-item">
-      <span>Current Week</span>
-      <strong>1</strong>
-    </div>
-
-    <div class="update-item">
-      <span>Starting Capital</span>
-      <strong>$3,000</strong>
-    </div>
-
-    <div class="update-item">
-      <span>Current Cash Flow</span>
-      <strong>$0.00/mo</strong>
-    </div>
-
-    <div class="update-item">
-      <span>Last Updated</span>
-      <strong>June 1, 2026</strong>
-    </div>
-  </div>
-
   <p class="update-note">
     The challenge is now live. Every trade, dividend, and options premium will be tracked publicly as the portfolio works toward $100/month in recurring income.
   </p>
 </div>
 
 <div class="grid">
-
-  <div class="card">
-    <h2>Current Challenge Status</h2>
-
-    <div class="stats">
-      <div class="stat">
-        <span>Current Week</span>
-        <strong>1</strong>
-      </div>
-
-      <div class="stat">
-        <span>Starting Capital</span>
-        <strong>$3,000</strong>
-      </div>
-
-      <div class="stat">
-        <span>Monthly Cash Flow</span>
-        <strong>$0.00</strong>
-      </div>
-
-      <div class="stat">
-        <span>Current Goal</span>
-        <strong>$100/mo</strong>
-      </div>
-    </div>
-  </div>
-
   <div class="card email-box">
     <h2>Follow The Challenge</h2>
     <p>
@@ -478,14 +143,8 @@ h2{
     <input type="email" placeholder="Enter your email">
     <button>Join Free</button>
 
-    <p class="footer">
-      No spam. Educational content only.
-    </p>
+    <p class="footer">No spam. Educational content only.</p>
   </div>
-
-</div>
-
-<div class="grid">
 
   <div class="card">
     <h2>Current Holdings</h2>
@@ -495,15 +154,17 @@ h2{
         <span>PFE</span>
         <strong>0 Shares</strong>
       </div>
-
       <div class="info-box">
         <span>Cash Available</span>
         <strong>$3,000</strong>
       </div>
-
       <div class="info-box">
         <span>Total Portfolio Value</span>
         <strong>$3,000</strong>
+      </div>
+      <div class="info-box">
+        <span>Monthly Income</span>
+        <strong>$0.00</strong>
       </div>
     </div>
 
@@ -511,37 +172,40 @@ h2{
       Holdings will be updated manually as the challenge portfolio is built.
     </p>
   </div>
+</div>
 
-  <div class="card trade-card">
-    <h2>Latest Trade</h2>
+<div class="card trade-card">
+  <h2>Latest Trade</h2>
 
-    <div class="trade-details">
+  <div class="trade-layout">
+    <div>
       <div class="info-box">
         <span>Date</span>
         <strong>TBD</strong>
       </div>
-
+      <br>
       <div class="info-box">
         <span>Action</span>
         <strong>None Yet</strong>
       </div>
+    </div>
 
+    <div>
       <div class="info-box">
         <span>Cost</span>
         <strong>$0</strong>
       </div>
-
+      <br>
       <div class="info-box">
         <span>Reason</span>
-        <strong>Waiting</strong>
+        <strong>Waiting for first cash-flow position</strong>
       </div>
     </div>
-
-    <p class="update-note">
-      First trade will be added once the initial cash-flow position is opened.
-    </p>
   </div>
 
+  <p class="update-note">
+    First trade will be added once the initial cash-flow position is opened.
+  </p>
 </div>
 
 <div class="card">
@@ -591,11 +255,8 @@ h2{
   </p>
 </div>
 
-<div class="footer">
-  Phantom of the Options • Buying Cash Flow Challenge
-</div>
+<div class="footer">Phantom of the Options • Buying Cash Flow Challenge</div>
 
 </div>
-
 </body>
 </html>
