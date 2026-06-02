@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cash Flow Scale</title>
+<style>
+body{background:#081326;color:white;font-family:Arial;padding:30px;text-align:center;}
+.container{max-width:900px;margin:auto;}
+.nav{display:flex;justify-content:space-between;margin-bottom:40px;}
+.nav a{color:white;text-decoration:none;margin-left:20px;font-weight:bold;}
+.card{background:#13223d;padding:30px;border-radius:20px;}
+input{padding:14px;width:80%;margin:10px;border-radius:10px;border:none;font-size:18px;}
+button{padding:14px 25px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;margin-top:15px;}
+.result{font-size:46px;color:#66d1ff;margin:20px;}
+.progress-wrap{background:#1f2937;border-radius:30px;overflow:hidden;height:30px;margin:20px;}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#22c55e,#38bdf8);}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="nav">
+  <strong>Phantom of the Options</strong>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="scoreboard.html">Scoreboard</a>
+    <a href="scale.html">Scale</a>
+  </div>
+</div>
+
+<div class="card">
+<h1>Cash Flow Scale</h1>
+<p>Enter your monthly dividends and options premium.</p>
+
+<input id="dividends" type="number" placeholder="Monthly Dividends">
+<input id="premium" type="number" placeholder="Monthly Options Premium">
+<input id="goal" type="number" placeholder="Monthly Goal" value="100">
+
+<br>
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="cashflow">$0.00/mo</div>
+
+<div class="progress-wrap">
+  <div class="progress-bar" id="bar"></div>
+</div>
+
+<p id="details">$0.00 / $100.00</p>
+<p id="level">Level 1</p>
+
+</div>
+</div>
+
+<script>
+function calculate(){
+  const dividends = Number(document.getElementById('dividends').value) || 0;
+  const premium = Number(document.getElementById('premium').value) || 0;
+  const goal = Number(document.getElementById('goal').value) || 100;
+
+  const total = dividends + premium;
+  const progress = Math.min((total / goal) * 100, 100);
+
+  document.getElementById('cashflow').innerText = `$${total.toFixed(2)}/mo`;
+  document.getElementById('bar').style.width = `${progress}%`;
+  document.getElementById('details').innerText = `$${total.toFixed(2)} / $${goal.toFixed(2)}`;
+
+  let level = 1;
+  if(total >= 100) level = 10;
+  else if(total >= 75) level = 9;
+  else if(total >= 50) level = 8;
+  else if(total >= 40) level = 7;
+  else if(total >= 25) level = 6;
+  else if(total >= 15) level = 5;
+  else if(total >= 10) level = 4;
+  else if(total >= 5) level = 3;
+  else if(total >= 1) level = 2;
+
+  document.getElementById('level').innerText = `Level ${level}`;
+}
+</script>
+
+</body>
+</html>
