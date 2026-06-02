@@ -255,6 +255,59 @@ h2{
     display:block;
   }
 }
+
+.latest-update{
+  margin-bottom:25px;
+}
+
+.update-banner{
+  background:#1b2f53;
+  color:#86efac;
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.update-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.update-item{
+  background:#1b2f53;
+  padding:15px;
+  border-radius:12px;
+}
+
+.update-item span{
+  display:block;
+  color:#b9c7dd;
+  font-size:13px;
+}
+
+.update-item strong{
+  display:block;
+  color:#66d1ff;
+  font-size:22px;
+  margin-top:5px;
+}
+
+.update-note{
+  margin-top:20px;
+  color:#dbeafe;
+  line-height:1.5;
+}
+
+@media(max-width:900px){
+
+  .update-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
 </style>
 </head>
 
@@ -295,6 +348,44 @@ h2{
     <a class="button secondary" href="scale.html">Try The Scale</a>
   </div>
 </section>
+
+  <div class="card latest-update">
+
+  <h2>Latest Update</h2>
+
+  <div class="update-banner">
+    Week 1 • Challenge Started With $3,000
+  </div>
+
+  <div class="update-grid">
+
+    <div class="update-item">
+      <span>Current Week</span>
+      <strong>1</strong>
+    </div>
+
+    <div class="update-item">
+      <span>Starting Capital</span>
+      <strong>$3,000</strong>
+    </div>
+
+    <div class="update-item">
+      <span>Current Cash Flow</span>
+      <strong>$0.00/mo</strong>
+    </div>
+
+    <div class="update-item">
+      <span>Last Updated</span>
+      <strong>June 1, 2026</strong>
+    </div>
+
+  </div>
+
+  <p class="update-note">
+    The challenge is now live. Every trade, dividend, and options premium will be tracked publicly as the portfolio works toward $100/month in recurring income.
+  </p>
+
+</div>
 
 <div class="grid">
 
