@@ -3,30 +3,56 @@
 <head>
 <title>Cash Flow Scale</title>
 <style>
-body{background:#081326;color:white;font-family:Arial;padding:30px;text-align:center;}
-.container{max-width:1100px;margin:auto;}
-.nav{display:flex;justify-content:space-between;margin-bottom:40px;}
+body{background:#081326;color:white;font-family:Arial;padding:30px;}
+.container{max-width:1150px;margin:auto;}
+.nav{display:flex;justify-content:space-between;margin-bottom:35px;}
 .nav a{color:white;text-decoration:none;margin-left:20px;font-weight:bold;}
-.card{background:#13223d;padding:30px;border-radius:20px;}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;}
-input{padding:14px;width:90%;margin:10px;border-radius:10px;border:none;font-size:18px;}
-button{padding:14px 25px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;margin-top:15px;}
-.result{font-size:46px;color:#66d1ff;margin:20px;}
-.progress-wrap{background:#1f2937;border-radius:30px;overflow:hidden;height:30px;margin:20px;}
+.card{background:#13223d;padding:35px;border-radius:22px;}
+h1{text-align:center;font-size:42px;margin-bottom:8px;}
+.subtitle{text-align:center;color:#b9c7dd;margin-bottom:35px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;}
+label{display:block;margin:12px 0 6px;color:#b9c7dd;font-weight:bold;}
+input{padding:15px;width:100%;border-radius:10px;border:none;font-size:18px;box-sizing:border-box;}
+button{padding:15px 28px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;margin-top:18px;cursor:pointer;}
+.result-box{text-align:center;margin-top:25px;}
+.cashflow{font-size:52px;color:#66d1ff;font-weight:bold;}
+.percent{font-size:34px;color:#86efac;font-weight:bold;margin-top:8px;}
+.progress-wrap{background:#1f2937;border-radius:30px;overflow:hidden;height:32px;margin:24px 0 12px;}
 .progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#22c55e,#38bdf8);}
-.scale-area{height:320px;position:relative;}
+.details{color:#dbeafe;font-size:18px;}
+.level{font-size:20px;font-weight:bold;margin-top:8px;color:#ffffff;}
+.scale-area{height:360px;position:relative;}
 .beam{
-  width:420px;height:14px;background:#cbd5e1;border-radius:20px;
-  position:absolute;left:50%;top:135px;transform:translateX(-50%) rotate(-18deg);
+  width:430px;height:14px;background:#cbd5e1;border-radius:20px;
+  position:absolute;left:52%;top:165px;transform:translateX(-50%) rotate(-18deg);
   transition:.5s;
 }
-.stand{width:14px;height:145px;background:#94a3b8;position:absolute;left:50%;top:140px;transform:translateX(-50%);}
-.base{width:180px;height:18px;background:#94a3b8;border-radius:20px;position:absolute;left:50%;top:275px;transform:translateX(-50%);}
-.pivot{width:38px;height:38px;background:#e2e8f0;border:8px solid #334155;border-radius:50%;position:absolute;left:50%;top:120px;transform:translateX(-50%);}
-.side-label{position:absolute;font-weight:bold;font-size:18px;}
-.left-label{left:80px;top:190px;}
-.right-label{right:70px;top:70px;color:#86efac;}
-@media(max-width:900px){.grid{grid-template-columns:1fr}.beam{width:300px}.left-label{left:20px}.right-label{right:20px}}
+.stand{width:14px;height:150px;background:#94a3b8;position:absolute;left:52%;top:170px;transform:translateX(-50%);}
+.base{width:190px;height:18px;background:#94a3b8;border-radius:20px;position:absolute;left:52%;top:310px;transform:translateX(-50%);}
+.pivot{width:40px;height:40px;background:#e2e8f0;border:8px solid #334155;border-radius:50%;position:absolute;left:52%;top:148px;transform:translateX(-50%);}
+.side-label{position:absolute;font-weight:bold;font-size:20px;text-align:center;}
+.left-label{left:90px;top:235px;}
+.right-label{right:60px;top:105px;color:#86efac;}
+.summary-card{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.mini{
+  background:#1b2f53;
+  padding:16px;
+  border-radius:14px;
+  text-align:center;
+}
+.mini span{display:block;color:#b9c7dd;font-size:13px;}
+.mini strong{font-size:22px;color:#66d1ff;}
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .beam{width:310px}
+  .left-label{left:20px}
+  .right-label{right:20px}
+}
 </style>
 </head>
 <body>
@@ -44,26 +70,48 @@ button{padding:14px 25px;background:#22c55e;color:white;border:none;border-radiu
 
 <div class="card">
 <h1>Cash Flow Scale</h1>
-<p>See how close your cash flow is to your next goal.</p>
+<p class="subtitle">Enter your monthly dividends, options premium, and personal cash flow goal.</p>
 
 <div class="grid">
 
 <div>
-  <input id="dividends" type="number" placeholder="Monthly Dividends">
-  <input id="premium" type="number" placeholder="Monthly Options Premium">
-  <input id="goal" type="number" placeholder="Monthly Goal" value="100">
+  <label>Monthly Dividends</label>
+  <input id="dividends" type="number" placeholder="Example: 4.65">
 
-  <br>
+  <label>Monthly Options Premium</label>
+  <input id="premium" type="number" placeholder="Example: 20">
+
+  <label>Monthly Cash Flow Goal</label>
+  <input id="goal" type="number" placeholder="Example: 100" value="100">
+
   <button onclick="calculate()">Calculate</button>
 
-  <div class="result" id="cashflow">$0.00/mo</div>
+  <div class="result-box">
+    <div class="cashflow" id="cashflow">$0.00/mo</div>
+    <div class="percent" id="percent">0%</div>
+  </div>
 
   <div class="progress-wrap">
     <div class="progress-bar" id="bar"></div>
   </div>
 
-  <p id="details">$0.00 / $100.00</p>
-  <p id="level">Level 1</p>
+  <div class="details" id="details">$0.00 / $100.00</div>
+  <div class="level" id="level">Level 1</div>
+
+  <div class="summary-card">
+    <div class="mini">
+      <span>Dividends</span>
+      <strong id="dividendOut">$0.00</strong>
+    </div>
+    <div class="mini">
+      <span>Premium</span>
+      <strong id="premiumOut">$0.00</strong>
+    </div>
+    <div class="mini">
+      <span>Still Needed</span>
+      <strong id="neededOut">$100.00</strong>
+    </div>
+  </div>
 </div>
 
 <div class="scale-area">
@@ -87,10 +135,16 @@ function calculate(){
 
   const total = dividends + premium;
   const progress = Math.min((total / goal) * 100, 100);
+  const needed = Math.max(goal - total, 0);
 
   document.getElementById('cashflow').innerText = `$${total.toFixed(2)}/mo`;
+  document.getElementById('percent').innerText = `${progress.toFixed(1).replace('.0','')}%`;
   document.getElementById('bar').style.width = `${progress}%`;
   document.getElementById('details').innerText = `$${total.toFixed(2)} / $${goal.toFixed(2)}`;
+
+  document.getElementById('dividendOut').innerText = `$${dividends.toFixed(2)}`;
+  document.getElementById('premiumOut').innerText = `$${premium.toFixed(2)}`;
+  document.getElementById('neededOut').innerText = `$${needed.toFixed(2)}`;
 
   let level = 1;
   if(progress >= 100) level = 10;
