@@ -5,452 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  background:#081326;
-  color:white;
-  font-family:Arial, sans-serif;
-  padding:30px;
-}
+body{background:#081326;color:white;font-family:Arial,sans-serif;padding:30px;}
+.container{max-width:1200px;margin:auto;}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;}
+.nav a{color:white;text-decoration:none;margin-left:20px;font-weight:bold;}
+.card{background:#13223d;padding:32px;border-radius:22px;margin-bottom:25px;max-width:1050px;margin-left:auto;margin-right:auto;}
+h1{text-align:center;font-size:42px;margin:0 0 8px;}
+.subtitle{text-align:center;color:#b9c7dd;margin-bottom:12px;}
+.challenge-week{text-align:center;color:#86efac;font-size:20px;font-weight:bold;margin-bottom:25px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;}
+label{display:block;margin:10px 0 5px;color:#b9c7dd;font-weight:bold;}
+input{padding:13px;width:100%;border-radius:10px;border:none;font-size:17px;box-sizing:border-box;}
+button{padding:13px 25px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;margin-top:15px;cursor:pointer;}
+.result-box{text-align:center;margin-top:22px;}
+.percent{font-size:46px;color:#86efac;font-weight:bold;}
+.cashflow{font-size:42px;color:#66d1ff;font-weight:bold;}
+.status{font-size:19px;font-weight:bold;color:#86efac;margin-top:6px;}
+.achieved{color:#86efac;font-size:24px;margin-top:8px;font-weight:bold;display:none;}
+.goal-summary{margin:15px 0;color:#dbeafe;font-size:16px;font-weight:bold;text-align:center;}
+.progress-wrap{background:#1f2937;border-radius:30px;overflow:hidden;height:30px;margin:15px 0 10px;}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#22c55e,#38bdf8);}
+.details{color:#dbeafe;font-size:16px;}
+.level{font-size:18px;font-weight:bold;margin-top:6px;}
+.milestones{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.milestone-pill{background:#102040;border:1px solid rgba(255,255,255,.12);padding:7px 11px;border-radius:999px;color:#dbeafe;font-weight:bold;font-size:13px;}
+.milestone-pill.done{background:#14532d;border-color:#22c55e;color:#86efac;}
+.summary-card{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.mini{background:#1b2f53;padding:14px;border-radius:14px;text-align:center;}
+.mini span{display:block;color:#b9c7dd;font-size:12px;}
+.mini strong{font-size:20px;color:#66d1ff;}
+.next-goal{margin-top:12px;background:#102040;border-radius:14px;padding:14px;color:#dbeafe;font-weight:bold;text-align:center;}
 
-.container{max-width:1250px;margin:auto;}
+.scale-area{height:390px;position:relative;overflow:visible;}
+.beam{width:440px;height:16px;background:#cbd5e1;border-radius:20px;position:absolute;left:50%;top:185px;transform:translateX(-50%) rotate(-35deg);transition:.5s;box-shadow:0 10px 25px rgba(0,0,0,.3);}
+.stand{width:16px;height:150px;background:#94a3b8;position:absolute;left:50%;top:190px;transform:translateX(-50%);}
+.base{width:200px;height:20px;background:#94a3b8;border-radius:20px;position:absolute;left:50%;top:330px;transform:translateX(-50%);}
+.pivot{width:62px;height:62px;background:#e2e8f0;border:8px solid #334155;border-radius:50%;position:absolute;left:50%;top:152px;transform:translateX(-50%);z-index:3;}
+.pivot-percent{position:absolute;left:50%;top:105px;transform:translateX(-50%);color:#86efac;font-size:32px;font-weight:bold;text-shadow:0 8px 20px rgba(0,0,0,.5);}
+.side-label{position:absolute;font-weight:bold;font-size:16px;text-align:center;background:#081326;padding:10px 13px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.35);line-height:1.15;}
+.left-label{left:65px;top:280px;color:#fff;}
+.right-label{right:40px;top:90px;color:#86efac;}
 
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:35px;
-}
-
-.nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:20px;
-  font-weight:bold;
-}
-
-.card{
-  background:#13223d;
-  padding:35px;
-  border-radius:22px;
-  margin-bottom:25px;
-}
-
-h1{text-align:center;font-size:44px;margin-bottom:8px;}
-.subtitle{text-align:center;color:#b9c7dd;margin-bottom:15px;}
-.challenge-week{text-align:center;color:#86efac;font-size:20px;font-weight:bold;margin-bottom:30px;}
-
-.grid{
-  display:grid;
-  grid-template-columns:.85fr 1.15fr;
-  gap:50px;
-  align-items:center;
-}
-
-label{display:block;margin:12px 0 6px;color:#b9c7dd;font-weight:bold;}
-input{padding:15px;width:100%;border-radius:10px;border:none;font-size:18px;box-sizing:border-box;}
-
-button{
-  padding:15px 28px;
-  background:#22c55e;
-  color:white;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
-  margin-top:18px;
-  cursor:pointer;
-}
-
-.result-box{text-align:center;margin-top:25px;}
-.percent{font-size:48px;color:#86efac;font-weight:bold;}
-.cashflow{font-size:46px;color:#66d1ff;font-weight:bold;margin-top:4px;}
-.status{font-size:21px;font-weight:bold;color:#86efac;margin-top:8px;}
-.achieved{color:#86efac;font-size:26px;margin-top:10px;font-weight:bold;display:none;}
-
-.goal-summary{
-  margin-top:18px;
-  margin-bottom:15px;
-  color:#dbeafe;
-  font-size:18px;
-  font-weight:bold;
-  text-align:center;
-}
-
-.progress-wrap{
-  background:#1f2937;
-  border-radius:30px;
-  overflow:hidden;
-  height:34px;
-  margin:18px 0 12px;
-}
-
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#22c55e,#38bdf8);
-}
-
-.details{color:#dbeafe;font-size:18px;}
-.level{font-size:20px;font-weight:bold;margin-top:8px;color:#ffffff;}
-
-.milestones{
-  margin-top:18px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  justify-content:center;
-}
-
-.milestone-pill{
-  background:#102040;
-  border:1px solid rgba(255,255,255,.12);
-  padding:8px 12px;
-  border-radius:999px;
-  color:#dbeafe;
-  font-weight:bold;
-  font-size:14px;
-}
-
-.milestone-pill.done{
-  background:#14532d;
-  border-color:#22c55e;
-  color:#86efac;
-}
-
-.summary-card{
-  margin-top:25px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.mini{
-  background:#1b2f53;
-  padding:16px;
-  border-radius:14px;
-  text-align:center;
-}
-
-.mini span{display:block;color:#b9c7dd;font-size:13px;}
-.mini strong{font-size:22px;color:#66d1ff;}
-
-.next-goal{
-  margin-top:15px;
-  background:#102040;
-  border-radius:14px;
-  padding:16px;
-  color:#dbeafe;
-  font-weight:bold;
-  text-align:center;
-}
-
-.scale-area{
-  height:470px;
-  position:relative;
-  overflow:visible;
-}
-
-.beam{
-  width:560px;
-  height:18px;
-  background:#cbd5e1;
-  border-radius:20px;
-  position:absolute;
-  left:54%;
-  top:225px;
-  transform:translateX(-50%) rotate(-35deg);
-  transition:.5s;
-  box-shadow:0 10px 25px rgba(0,0,0,.3);
-}
-
-.stand{
-  width:18px;
-  height:185px;
-  background:#94a3b8;
-  position:absolute;
-  left:54%;
-  top:230px;
-  transform:translateX(-50%);
-}
-
-.base{
-  width:250px;
-  height:22px;
-  background:#94a3b8;
-  border-radius:20px;
-  position:absolute;
-  left:54%;
-  top:405px;
-  transform:translateX(-50%);
-}
-
-.pivot{
-  width:68px;
-  height:68px;
-  background:#e2e8f0;
-  border:8px solid #334155;
-  border-radius:50%;
-  position:absolute;
-  left:54%;
-  top:190px;
-  transform:translateX(-50%);
-  z-index:3;
-}
-
-.pivot-percent{
-  position:absolute;
-  left:54%;
-  top:135px;
-  transform:translateX(-50%);
-  color:#86efac;
-  font-size:34px;
-  font-weight:bold;
-  text-shadow:0 8px 20px rgba(0,0,0,.5);
-}
-
-.side-label{
-  position:absolute;
-  font-weight:bold;
-  font-size:18px;
-  text-align:center;
-  background:#081326;
-  padding:11px 15px;
-  border-radius:12px;
-  box-shadow:0 8px 20px rgba(0,0,0,.35);
-  line-height:1.15;
-}
-
-.left-label{left:45px;top:335px;color:#ffffff;}
-.right-label{right:10px;top:105px;color:#86efac;}
-
-.portfolio-card{display:block;}
-
-  /* Desktop layout cleanup */
-.card{
-  max-width:1050px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.grid{
-  grid-template-columns:1fr 1fr;
-  gap:28px;
-}
-
-.scale-area{
-  height:390px;
-}
-
-.beam{
-  width:440px;
-  left:50%;
-  top:185px;
-}
-
-.stand{
-  left:50%;
-  top:190px;
-  height:150px;
-}
-
-.base{
-  left:50%;
-  top:330px;
-  width:200px;
-}
-
-.pivot{
-  left:50%;
-  top:152px;
-}
-
-.pivot-percent{
-  left:50%;
-  top:105px;
-}
-
-.left-label{
-  left:65px;
-  top:280px;
-}
-
-.right-label{
-  right:40px;
-  top:90px;
-}
+.portfolio-title{display:flex;justify-content:space-between;align-items:center;gap:15px;}
+.portfolio-total{color:#86efac;font-weight:bold;font-size:20px;}
+table{width:100%;border-collapse:collapse;margin-top:15px;}
+th,td{padding:14px;border-bottom:1px solid rgba(255,255,255,.12);text-align:left;}
+th{color:#66d1ff;}
 
 @media(max-width:900px){
-
   body{padding:10px;}
   .container{max-width:100%;}
-
-  .nav{
-    flex-direction:column;
-    gap:8px;
-    text-align:center;
-    margin-bottom:14px;
-  }
-
+  .nav{flex-direction:column;gap:8px;text-align:center;margin-bottom:14px;}
   .nav strong{font-size:15px;}
   .nav a{margin:0 8px;font-size:13px;}
-
-  .card{
-    padding:14px;
-    border-radius:16px;
-    margin-bottom:14px;
-  }
-
-  h1{
-    font-size:28px;
-    margin-bottom:4px;
-  }
-
-  .subtitle,
-  .challenge-week,
-  .goal-summary,
-  .details,
-  .next-goal{
-    display:none;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-    gap:0;
-  }
-
-  label{
-    font-size:12px;
-    margin-top:6px;
-    margin-bottom:4px;
-  }
-
-  input{
-    font-size:14px;
-    padding:8px;
-    border-radius:8px;
-  }
-
-  button{
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-  }
-
-  .result-box{
-    margin-top:10px;
-  }
-
-  .percent{
-    font-size:36px;
-    line-height:1;
-  }
-
-  .cashflow{
-    font-size:30px;
-    line-height:1.05;
-  }
-
-  .status{
-    font-size:14px;
-    margin-top:5px;
-  }
-
-  .progress-wrap{
-    height:20px;
-    margin:10px 0 6px;
-  }
-
-  .level{
-    font-size:14px;
-    margin-top:4px;
-  }
-
-  .milestones{
-    gap:5px;
-    margin-top:8px;
-  }
-
-  .milestone-pill{
-    font-size:10px;
-    padding:5px 8px;
-  }
-
-  .summary-card{
-    grid-template-columns:repeat(3,1fr);
-    gap:6px;
-    margin-top:10px;
-  }
-
-  .mini{
-    padding:8px 4px;
-    border-radius:10px;
-  }
-
-  .mini span{
-    font-size:10px;
-  }
-
-  .mini strong{
-    font-size:14px;
-  }
-
-  .scale-area{
-    height:200px;
-    margin-top:6px;
-    overflow:hidden;
-  }
-
-  .beam{
-    width:210px;
-    height:10px;
-    left:50%;
-    top:95px;
-  }
-
-  .stand{
-    left:50%;
-    top:100px;
-    height:78px;
-    width:10px;
-  }
-
-  .base{
-    left:50%;
-    top:174px;
-    width:120px;
-    height:13px;
-  }
-
-  .pivot{
-    left:50%;
-    top:76px;
-    width:40px;
-    height:40px;
-    border-width:5px;
-  }
-
-  .pivot-percent{
-    left:50%;
-    top:38px;
-    font-size:28px;
-  }
-
-  .left-label{
-    left:10px;
-    top:150px;
-    font-size:9px;
-    padding:6px 8px;
-  }
-
-  .right-label{
-    right:10px;
-    top:24px;
-    font-size:9px;
-    padding:6px 8px;
-  }
-
-  .portfolio-card{
-    display:none;
-  }
+  .card{padding:14px;border-radius:16px;margin-bottom:14px;}
+  h1{font-size:28px;margin-bottom:4px;}
+  .subtitle,.challenge-week,.goal-summary,.details,.next-goal{display:none;}
+  .grid{grid-template-columns:1fr;gap:0;}
+  label{font-size:12px;margin-top:6px;margin-bottom:4px;}
+  input{font-size:14px;padding:8px;border-radius:8px;}
+  button{width:100%;padding:10px;margin-top:10px;}
+  .result-box{margin-top:10px;}
+  .percent{font-size:36px;line-height:1;}
+  .cashflow{font-size:30px;line-height:1.05;}
+  .status{font-size:14px;margin-top:5px;}
+  .progress-wrap{height:20px;margin:10px 0 6px;}
+  .level{font-size:14px;margin-top:4px;}
+  .milestones{gap:5px;margin-top:8px;}
+  .milestone-pill{font-size:10px;padding:5px 8px;}
+  .summary-card{grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;}
+  .mini{padding:8px 4px;border-radius:10px;}
+  .mini span{font-size:10px;}
+  .mini strong{font-size:14px;}
+  .scale-area{height:200px;margin-top:6px;overflow:hidden;}
+  .beam{width:210px;height:10px;left:50%;top:95px;}
+  .stand{left:50%;top:100px;height:78px;width:10px;}
+  .base{left:50%;top:174px;width:120px;height:13px;}
+  .pivot{left:50%;top:76px;width:40px;height:40px;border-width:5px;}
+  .pivot-percent{left:50%;top:38px;font-size:28px;}
+  .left-label{left:10px;top:150px;font-size:9px;padding:6px 8px;}
+  .right-label{right:10px;top:24px;font-size:9px;padding:6px 8px;}
+  .portfolio-card{display:none;}
 }
 </style>
 </head>
@@ -469,13 +104,11 @@ button{
 </div>
 
 <div class="card">
-
 <h1>Cash Flow Scale</h1>
 <p class="subtitle">Enter your monthly dividends, options premium, and personal cash flow goal.</p>
 <div class="challenge-week">Week 1 • Started With $3,000</div>
 
 <div class="grid">
-
 <div>
   <label>Monthly Dividends</label>
   <input id="dividends" type="number" placeholder="Example: 4.65">
@@ -495,9 +128,7 @@ button{
     <div class="achieved" id="achieved">🎉 Goal Achieved</div>
   </div>
 
-  <div class="goal-summary" id="goalSummary">
-    Goal: $100/mo | Current: $0/mo | Needed: $100/mo
-  </div>
+  <div class="goal-summary" id="goalSummary">Goal: $100/mo | Current: $0/mo | Needed: $100/mo</div>
 
   <div class="progress-wrap">
     <div class="progress-bar" id="bar"></div>
@@ -523,9 +154,7 @@ button{
     </div>
   </div>
 
-  <div class="next-goal" id="nextGoal">
-    Next Goal After This: $250/month
-  </div>
+  <div class="next-goal" id="nextGoal">Next Goal After This: $250/month</div>
 </div>
 
 <div class="scale-area">
@@ -537,13 +166,47 @@ button{
   <div class="side-label left-label">WORKING<br>FOR MONEY</div>
   <div class="side-label right-label">MONEY WORKING<br>FOR YOU</div>
 </div>
-
 </div>
 </div>
 
 <div class="card portfolio-card">
-  <h2>Current Portfolio</h2>
-  <p>This section is hidden on mobile. View full details on the Scoreboard page.</p>
+  <div class="portfolio-title">
+    <h2>Current Portfolio</h2>
+    <div class="portfolio-total" id="portfolioTotal">Total Monthly Income: $0.00</div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Asset</th>
+      <th>Shares / Amount</th>
+      <th>Cash Flow Source</th>
+      <th>Monthly Income</th>
+    </tr>
+    <tr>
+      <td>PFE</td>
+      <td>100 Shares</td>
+      <td>Dividend + covered call premium</td>
+      <td id="pfeIncome">$0.00</td>
+    </tr>
+    <tr>
+      <td>O</td>
+      <td>Building position</td>
+      <td>Monthly dividend</td>
+      <td>$0.00</td>
+    </tr>
+    <tr>
+      <td>JEPI</td>
+      <td>Future unlock</td>
+      <td>Monthly income ETF</td>
+      <td>$0.00</td>
+    </tr>
+    <tr>
+      <td>JEPQ</td>
+      <td>Future unlock</td>
+      <td>Monthly income ETF</td>
+      <td>$0.00</td>
+    </tr>
+  </table>
 </div>
 
 </div>
@@ -582,17 +245,17 @@ function calculate(){
   document.getElementById('pivotPercent').innerText = `${progress.toFixed(0)}%`;
   document.getElementById('bar').style.width = `${progress}%`;
   document.getElementById('details').innerText = `$${total.toFixed(2)} / $${goal.toFixed(2)}`;
-
   document.getElementById('goalSummary').innerText =
     `Goal: $${goal.toFixed(0)}/mo | Current: $${total.toFixed(2)}/mo | Needed: $${needed.toFixed(2)}/mo`;
 
   document.getElementById('dividendOut').innerText = `$${dividends.toFixed(2)}`;
   document.getElementById('premiumOut').innerText = `$${premium.toFixed(2)}`;
   document.getElementById('neededOut').innerText = `$${needed.toFixed(2)}`;
+  document.getElementById('portfolioTotal').innerText = `Total Monthly Income: $${total.toFixed(2)}`;
+  document.getElementById('pfeIncome').innerText = `$${total.toFixed(2)}`;
 
   document.getElementById('status').innerText = getStatus(progressRaw);
   document.getElementById('achieved').style.display = progressRaw >= 100 ? "block" : "none";
-
   document.getElementById('nextGoal').innerText =
     `Next Goal After This: $${getNextGoal(goal).toLocaleString()}/month`;
 
@@ -600,7 +263,6 @@ function calculate(){
   neededCard.style.background = needed <= 10 ? "#14532d" : "#1b2f53";
 
   const marks = [1,5,10,25,50,75,100];
-
   document.getElementById("milestones").innerHTML =
     marks.map(m => {
       const done = total >= m;
