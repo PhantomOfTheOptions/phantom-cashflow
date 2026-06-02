@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Cash Flow Scale</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
@@ -19,6 +20,7 @@ body{
 .nav{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   margin-bottom:35px;
 }
 
@@ -95,17 +97,18 @@ button{
   margin-top:25px;
 }
 
-.cashflow{
-  font-size:56px;
-  color:#66d1ff;
-  font-weight:bold;
-}
-
 .percent{
-  font-size:38px;
+  font-size:48px;
   color:#86efac;
   font-weight:bold;
   margin-top:8px;
+}
+
+.cashflow{
+  font-size:46px;
+  color:#66d1ff;
+  font-weight:bold;
+  margin-top:4px;
 }
 
 .status{
@@ -220,17 +223,18 @@ button{
 .scale-area{
   height:470px;
   position:relative;
+  overflow:visible;
 }
 
 .beam{
-  width:610px;
+  width:560px;
   height:18px;
   background:#cbd5e1;
   border-radius:20px;
   position:absolute;
-  left:56%;
+  left:54%;
   top:225px;
-  transform:translateX(-50%) rotate(35deg);
+  transform:translateX(-50%) rotate(-35deg);
   transition:.5s;
   box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
@@ -240,7 +244,7 @@ button{
   height:185px;
   background:#94a3b8;
   position:absolute;
-  left:56%;
+  left:54%;
   top:230px;
   transform:translateX(-50%);
 }
@@ -251,7 +255,7 @@ button{
   background:#94a3b8;
   border-radius:20px;
   position:absolute;
-  left:56%;
+  left:54%;
   top:405px;
   transform:translateX(-50%);
 }
@@ -263,7 +267,7 @@ button{
   border:8px solid #334155;
   border-radius:50%;
   position:absolute;
-  left:56%;
+  left:54%;
   top:190px;
   transform:translateX(-50%);
   z-index:3;
@@ -271,7 +275,7 @@ button{
 
 .pivot-percent{
   position:absolute;
-  left:56%;
+  left:54%;
   top:135px;
   transform:translateX(-50%);
   color:#86efac;
@@ -293,13 +297,13 @@ button{
 }
 
 .left-label{
-  left:35px;
-  top:340px;
+  left:45px;
+  top:335px;
   color:#ffffff;
 }
 
 .right-label{
-  right:-10px;
+  right:10px;
   top:105px;
   color:#86efac;
 }
@@ -333,37 +337,7 @@ th{
   font-size:20px;
 }
 
-@media(max-width:950px){
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .beam{
-    width:380px;
-    left:50%;
-  }
-
-  .stand,.base,.pivot,.pivot-percent{
-    left:50%;
-  }
-
-  .left-label{
-    left:15px;
-  }
-
-  .right-label{
-    right:15px;
-  }
-
-  .summary-card{
-    grid-template-columns:1fr;
-  }
-
-  .portfolio-title{
-    display:block;
-  }
-}
-  @media(max-width:900px){
+@media(max-width:900px){
 
   body{
     padding:14px;
@@ -385,16 +359,25 @@ th{
   }
 
   .card{
-    padding:20px;
+    padding:24px;
+    border-radius:18px;
   }
 
   h1{
     font-size:32px;
   }
 
+  .subtitle{
+    font-size:14px;
+  }
+
+  .challenge-week{
+    font-size:16px;
+  }
+
   .grid{
     grid-template-columns:1fr;
-    gap:20px;
+    gap:10px;
   }
 
   input{
@@ -406,16 +389,21 @@ th{
     width:100%;
   }
 
-  .cashflow{
-    font-size:42px;
+  .percent{
+    font-size:44px;
   }
 
-  .percent{
-    font-size:30px;
+  .cashflow{
+    font-size:38px;
+  }
+
+  .status{
+    font-size:17px;
   }
 
   .goal-summary{
     font-size:14px;
+    line-height:1.4;
   }
 
   .summary-card{
@@ -423,52 +411,58 @@ th{
   }
 
   .scale-area{
-    height:340px;
-    margin-top:20px;
+    height:320px;
+    margin-top:18px;
+    overflow:hidden;
   }
 
   .beam{
-    width:320px;
+    width:255px;
     height:14px;
     left:50%;
-    top:160px;
+    top:150px;
   }
 
   .stand{
     left:50%;
-    top:165px;
-    height:135px;
+    top:155px;
+    height:120px;
+    width:14px;
   }
 
   .base{
     left:50%;
-    top:295px;
-    width:170px;
+    top:270px;
+    width:160px;
+    height:18px;
   }
 
   .pivot{
     left:50%;
-    top:132px;
+    top:124px;
     width:54px;
     height:54px;
+    border-width:7px;
   }
 
   .pivot-percent{
     left:50%;
-    top:88px;
-    font-size:28px;
+    top:78px;
+    font-size:42px;
   }
 
   .left-label{
-    left:5px;
-    top:250px;
-    font-size:13px;
+    left:15px;
+    top:245px;
+    font-size:11px;
+    padding:8px 10px;
   }
 
   .right-label{
-    right:5px;
-    top:55px;
-    font-size:13px;
+    right:15px;
+    top:58px;
+    font-size:11px;
+    padding:8px 10px;
   }
 
   .milestones{
@@ -478,6 +472,15 @@ th{
   .milestone-pill{
     font-size:12px;
     padding:7px 10px;
+  }
+
+  .portfolio-title{
+    display:block;
+  }
+
+  .portfolio-total{
+    margin-top:10px;
+    font-size:16px;
   }
 
   table{
@@ -524,8 +527,8 @@ th{
   <button onclick="calculate()">Calculate</button>
 
   <div class="result-box">
-    <div class="cashflow" id="cashflow">$0.00/mo</div>
     <div class="percent" id="percent">0%</div>
+    <div class="cashflow" id="cashflow">$0.00/mo</div>
     <div class="status" id="status">Just Getting Started</div>
     <div class="achieved" id="achieved">🎉 Goal Achieved</div>
   </div>
@@ -703,7 +706,7 @@ function calculate(){
 
   document.getElementById('level').innerText = `Level ${level}`;
 
- const tilt = -35 + (progress / 100) * 70;
+  const tilt = -35 + (progress / 100) * 70;
   document.getElementById('beam').style.transform = `translateX(-50%) rotate(${tilt}deg)`;
 }
 
