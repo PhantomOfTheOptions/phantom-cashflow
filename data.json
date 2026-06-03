@@ -3,7 +3,7 @@
   "startingCapital": 3000,
   "portfolioValue": 3000,
   "cashAvailable": 3000,
-  "monthlyIncome": 155,
+  "monthlyIncome": 15500,
   "goalIncome": 100,
   "progressPercent": 7,
 
@@ -19,5 +19,5 @@
   "latestTradeCost": 0,
   "latestTradeReason": "Waiting for first cash-flow position",
 
-  "pfeShares": 100
+  "pfeShares": 10000
 }
