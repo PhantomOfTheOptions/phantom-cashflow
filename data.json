@@ -17,7 +17,7 @@
   "latestTradeDate": "TBD",
   "latestTradeAction": "None Yet",
   "latestTradeCost": 0,
-  "latestTradeReason": "Waiting for first cash-flow position"
+  "latestTradeReason": "Waiting for first cash-flow position",
 
-  "pfeShares": 100,
+  "pfeShares": 100
 }
