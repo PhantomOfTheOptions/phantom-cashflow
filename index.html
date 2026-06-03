@@ -272,5 +272,23 @@ sender('6437b196ea2295')
 <div class="footer">Phantom of the Options • Buying Cash Flow Challenge</div>
 
 </div>
+
+  <script>
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const progressElement = document.querySelector('.percent');
+    if(progressElement){
+      progressElement.textContent = data.progressPercent + '% Complete';
+    }
+
+    document.body.innerHTML =
+      document.body.innerHTML
+        .replace('$3,000', '$' + data.startingCapital.toLocaleString());
+
+  })
+  .catch(error => console.log(error));
+</script>
 </body>
 </html>
