@@ -1,0 +1,21 @@
+{
+  "week": 1,
+  "startingCapital": 3000,
+  "portfolioValue": 3000,
+  "cashAvailable": 3000,
+  "monthlyIncome": 0,
+  "goalIncome": 100,
+  "progressPercent": 0,
+
+  "tradesMade": 0,
+  "dividendsCollected": 0,
+  "optionPremiumEarned": 0,
+  "portfolioYield": 0,
+
+  "subscribers": 12,
+
+  "latestTradeDate": "TBD",
+  "latestTradeAction": "None Yet",
+  "latestTradeCost": 0,
+  "latestTradeReason": "Waiting for first cash-flow position"
+}
