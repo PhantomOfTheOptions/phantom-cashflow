@@ -18,4 +18,6 @@
   "latestTradeAction": "None Yet",
   "latestTradeCost": 0,
   "latestTradeReason": "Waiting for first cash-flow position"
+
+  "pfeShares": 0,
 }
