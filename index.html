@@ -57,6 +57,21 @@ h2{color:#66d1ff;margin:10px 0 18px;}
   .button{display:block;}
 }
 </style>
+  <script>
+(function (s, e, n, d, er) {
+  s['Sender'] = er;
+  s[er] = s[er] || function () {
+    (s[er].q = s[er].q || []).push(arguments)
+  };
+  s[er].l = 1 * new Date();
+  var a = e.createElement(n),
+      m = e.getElementsByTagName(n)[0];
+  a.async = 1;
+  a.src = d;
+  m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+sender('6437b196ea2295')
+</script>
 </head>
 
 <body>
@@ -140,8 +155,7 @@ h2{color:#66d1ff;margin:10px 0 18px;}
       Get weekly updates when new trades, dividends, option premiums, and cash flow milestones are posted.
     </p>
 
-    <input type="email" placeholder="Enter your email">
-    <button>Join Free</button>
+    <div style="text-align: left" class="sender-form-field" data-sender-form-id="bo2o5N"></div>
 
     <p class="footer">No spam. Educational content only.</p>
   </div>
