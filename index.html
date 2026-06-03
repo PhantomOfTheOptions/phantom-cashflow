@@ -275,9 +275,19 @@ sender('6437b196ea2295')
 
 <script>
 function money(value){
-  return "$" + Number(value).toLocaleString(undefined, {
+  return "$" + Number(value || 0).toLocaleString(undefined, {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2
+  });
+}
+
+function setInfoBox(label, value){
+  document.querySelectorAll(".info-box").forEach(box => {
+    const span = box.querySelector("span");
+    const strong = box.querySelector("strong");
+    if(span && strong && span.textContent.trim() === label){
+      strong.textContent = value;
+    }
   });
 }
 
@@ -290,19 +300,35 @@ fetch("data.json?v=" + Date.now())
     document.querySelector(".progress-bar").style.width =
       data.progressPercent + "%";
 
-    const socialProof = document.querySelector(".social-proof");
-    if (socialProof) {
-      socialProof.textContent =
-        "Join " + data.subscribers + " investors following the challenge";
-    }
+    document.querySelector(".social-proof").textContent =
+      "Join " + data.subscribers + " investors following the challenge";
 
-    const progressText = document.querySelector(".progress-text");
-    if (progressText) {
-      progressText.innerHTML =
-        "Goal: " + money(data.goalIncome) +
-        "/month &nbsp; | &nbsp; Current Cash Flow: " +
-        money(data.monthlyIncome) + "/month";
-    }
+    document.querySelector(".progress-text").innerHTML =
+      "Goal: " + money(data.goalIncome) +
+      "/month &nbsp; | &nbsp; Current Cash Flow: " +
+      money(data.monthlyIncome) + "/month";
+
+    const heroSubtitle = document.querySelector(".hero h2");
+    heroSubtitle.textContent = "Starting With " + money(data.startingCapital);
+
+    const updateBanner = document.querySelector(".update-banner");
+    updateBanner.textContent =
+      "Week " + data.week + " • Challenge Started With " + money(data.startingCapital);
+
+    setInfoBox("Trades Made", data.tradesMade);
+    setInfoBox("Dividends Collected", money(data.dividendsCollected));
+    setInfoBox("Option Premium Earned", money(data.optionPremiumEarned));
+    setInfoBox("Portfolio Yield", data.portfolioYield + "%");
+
+    setInfoBox("PFE", (data.pfeShares || 0) + " Shares");
+    setInfoBox("Cash Available", money(data.cashAvailable));
+    setInfoBox("Total Portfolio Value", money(data.portfolioValue));
+    setInfoBox("Monthly Income", money(data.monthlyIncome));
+
+    setInfoBox("Date", data.latestTradeDate);
+    setInfoBox("Action", data.latestTradeAction);
+    setInfoBox("Cost", money(data.latestTradeCost));
+    setInfoBox("Reason", data.latestTradeReason);
   })
   .catch(error => console.log(error));
 </script>
