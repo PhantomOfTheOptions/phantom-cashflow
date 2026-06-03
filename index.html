@@ -281,10 +281,16 @@ function money(value){
   });
 }
 
+function setText(selector, value){
+  const el = document.querySelector(selector);
+  if(el) el.textContent = value;
+}
+
 function setInfoBox(label, value){
   document.querySelectorAll(".info-box").forEach(box => {
     const span = box.querySelector("span");
     const strong = box.querySelector("strong");
+
     if(span && strong && span.textContent.trim() === label){
       strong.textContent = value;
     }
@@ -294,26 +300,34 @@ function setInfoBox(label, value){
 fetch("data.json?v=" + Date.now())
   .then(response => response.json())
   .then(data => {
-    document.querySelector(".percent").textContent =
-      data.progressPercent + "% Complete";
+    setText(".percent", data.progressPercent + "% Complete");
 
-    document.querySelector(".progress-bar").style.width =
-      data.progressPercent + "%";
+    const bar = document.querySelector(".progress-bar");
+    if(bar) bar.style.width = data.progressPercent + "%";
 
-    document.querySelector(".social-proof").textContent =
-      "Join " + data.subscribers + " investors following the challenge";
+    setText(".social-proof", "Join " + data.subscribers + " investors following the challenge");
 
-    document.querySelector(".progress-text").innerHTML =
-      "Goal: " + money(data.goalIncome) +
-      "/month &nbsp; | &nbsp; Current Cash Flow: " +
-      money(data.monthlyIncome) + "/month";
+    const progressText = document.querySelector(".progress-text");
+    if(progressText){
+      progressText.innerHTML =
+        "Goal: " + money(data.goalIncome) +
+        "/month &nbsp; | &nbsp; Current Cash Flow: " +
+        money(data.monthlyIncome) + "/month";
+    }
 
     const heroSubtitle = document.querySelector(".hero h2");
-    heroSubtitle.textContent = "Starting With " + money(data.startingCapital);
+    if(heroSubtitle) heroSubtitle.textContent = "Starting With " + money(data.startingCapital);
 
     const updateBanner = document.querySelector(".update-banner");
-    updateBanner.textContent =
-      "Week " + data.week + " • Challenge Started With " + money(data.startingCapital);
+    if(updateBanner){
+      updateBanner.textContent =
+        "Week " + data.week + " • Challenge Started With " + money(data.startingCapital);
+    }
+
+    setInfoBox("Current Week", data.week);
+    setInfoBox("Starting Capital", money(data.startingCapital));
+    setInfoBox("Monthly Cash Flow", money(data.monthlyIncome));
+    setInfoBox("Current Goal", money(data.goalIncome) + "/mo");
 
     setInfoBox("Trades Made", data.tradesMade);
     setInfoBox("Dividends Collected", money(data.dividendsCollected));
