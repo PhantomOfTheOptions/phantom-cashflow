@@ -2,12 +2,12 @@
   "week": 1,
   "startingCapital": 3000,
   "portfolioValue": 3000,
-  "cashAvailable": 3000,
-  "monthlyIncome": 15500,
+  "cashAvailable": 500,
+  "monthlyIncome": 25,
   "goalIncome": 100,
   "progressPercent": 7,
 
-  "tradesMade": 0,
+  "tradesMade": 1,
   "dividendsCollected": 0,
   "optionPremiumEarned": 0,
   "portfolioYield": 0,
@@ -19,5 +19,5 @@
   "latestTradeCost": 0,
   "latestTradeReason": "Waiting for first cash-flow position",
 
-  "pfeShares": 10000
+  "pfeShares": 100
 }
