@@ -273,20 +273,40 @@ sender('6437b196ea2295')
 
 </div>
 
-  <script>
-fetch('data.json')
+  <script><script>
+function money(value){
+  return "$" + Number(value).toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2
+  });
+}
+
+fetch("data.json")
   .then(response => response.json())
   .then(data => {
+    document.querySelector(".percent").textContent =
+      data.progressPercent + "% Complete";
 
-    const progressElement = document.querySelector('.percent');
-    if(progressElement){
-      progressElement.textContent = data.progressPercent + '% Complete';
-    }
+    document.querySelector(".progress-bar").style.width =
+      data.progressPercent + "%";
 
-    document.body.innerHTML =
-      document.body.innerHTML
-        .replace('$3,000', '$' + data.startingCapital.toLocaleString());
-
+    document.body.innerHTML = document.body.innerHTML
+      .replace("Starting With $3,000", "Starting With " + money(data.startingCapital))
+      .replace("Join 12 investors following the challenge", "Join " + data.subscribers + " investors following the challenge")
+      .replace("Current Cash Flow: $0/month", "Current Cash Flow: " + money(data.monthlyIncome) + "/month")
+      .replace("Goal: $100/month", "Goal: " + money(data.goalIncome) + "/month")
+      .replace("Week 1 • Challenge Started With $3,000", "Week " + data.week + " • Challenge Started With " + money(data.startingCapital))
+      .replace("Trades Made</span>\n      <strong>0</strong>", "Trades Made</span>\n      <strong>" + data.tradesMade + "</strong>")
+      .replace("Dividends Collected</span>\n      <strong>$0.00</strong>", "Dividends Collected</span>\n      <strong>" + money(data.dividendsCollected) + "</strong>")
+      .replace("Option Premium Earned</span>\n      <strong>$0.00</strong>", "Option Premium Earned</span>\n      <strong>" + money(data.optionPremiumEarned) + "</strong>")
+      .replace("Portfolio Yield</span>\n      <strong>0.0%</strong>", "Portfolio Yield</span>\n      <strong>" + data.portfolioYield + "%</strong>")
+      .replace("Cash Available</span>\n        <strong>$3,000</strong>", "Cash Available</span>\n        <strong>" + money(data.cashAvailable) + "</strong>")
+      .replace("Total Portfolio Value</span>\n        <strong>$3,000</strong>", "Total Portfolio Value</span>\n        <strong>" + money(data.portfolioValue) + "</strong>")
+      .replace("Monthly Income</span>\n        <strong>$0.00</strong>", "Monthly Income</span>\n        <strong>" + money(data.monthlyIncome) + "</strong>")
+      .replace("Date</span>\n        <strong>TBD</strong>", "Date</span>\n        <strong>" + data.latestTradeDate + "</strong>")
+      .replace("Action</span>\n        <strong>None Yet</strong>", "Action</span>\n        <strong>" + data.latestTradeAction + "</strong>")
+      .replace("Cost</span>\n        <strong>$0</strong>", "Cost</span>\n        <strong>" + money(data.latestTradeCost) + "</strong>")
+      .replace("Reason</span>\n        <strong>Waiting for first cash-flow position</strong>", "Reason</span>\n        <strong>" + data.latestTradeReason + "</strong>");
   })
   .catch(error => console.log(error));
 </script>
