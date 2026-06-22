@@ -51,7 +51,7 @@ h2{color:#66d1ff;margin:10px 0 18px;}
 }
 
 @media(max-width:900px){
-  {padding:12px;}
+  body{padding:12px;}
   .nav{flex-direction:column;gap:10px;text-align:center;}
   .nav a{margin:0 8px;font-size:14px;}
   .hero{padding:28px 18px;}
@@ -79,6 +79,7 @@ sender('6437b196ea2295')
 </script>
 </head>
 
+  <body>
 <div class="container">
 
 <div class="nav">
@@ -307,16 +308,17 @@ fetch("data.json?v=" + Date.now())
         "Goal: " + money(data.goalIncome) +
         "/month &nbsp; | &nbsp; Current Cash Flow: " +
         money(data.monthlyIncome) + "/month";
+    }
 
-      const milestones = [15, 25, 50, 100, 200, 350, 500, 750, 1000, 2500];
-const milestoneContainer = document.querySelector(".milestones");
+    const milestones = [15, 25, 50, 100, 200, 350, 500, 750, 1000, 2500];
+    const milestoneContainer = document.querySelector(".milestones");
 
-if (milestoneContainer) {
-  milestoneContainer.innerHTML = milestones.map(amount => `
-    <span class="pill ${Number(data.monthlyIncome) >= amount ? "completed" : ""}">
-      $${amount.toLocaleString()}/mo
-    </span>
-  `).join("");
+    if(milestoneContainer){
+      milestoneContainer.innerHTML = milestones.map(amount => `
+        <span class="pill ${Number(data.monthlyIncome) >= amount ? "completed" : ""}">
+          $${amount.toLocaleString()}/mo
+        </span>
+      `).join("");
     }
 
     const heroSubtitle = document.querySelector(".hero h2");
@@ -327,11 +329,6 @@ if (milestoneContainer) {
       updateBanner.textContent =
         "Week " + data.week + " • Challenge Started With " + money(data.startingCapital);
     }
-
-    setInfoBox("Current Week", data.week);
-    setInfoBox("Starting Capital", money(data.startingCapital));
-    setInfoBox("Monthly Cash Flow", money(data.monthlyIncome));
-    setInfoBox("Current Goal", money(data.goalIncome) + "/mo");
 
     setInfoBox("Trades Made", data.tradesMade);
     setInfoBox("Dividends Collected", money(data.dividendsCollected));
