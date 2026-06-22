@@ -1,23 +1,23 @@
 {
   "week": 1,
   "startingCapital": 3000,
-  "portfolioValue": 3000,
-  "cashAvailable": 3000,
-  "monthlyIncome": 0,
+  "portfolioValue": 3173,
+  "cashAvailable": 154.94,
+  "monthlyIncome": 22,
   "goalIncome": 100,
   "progressPercent": 0,
 
-  "tradesMade": 0,
+  "tradesMade": 7,
   "dividendsCollected": 0,
-  "optionPremiumEarned": 0,
+  "optionPremiumEarned": 22,
   "portfolioYield": 0,
 
   "subscribers": 0,
 
-  "latestTradeDate": "TBD",
-  "latestTradeAction": "None Yet",
+  "latestTradeDate": "6/18/2026",
+  "latestTradeAction": "Rolled our PFE Put Option",
   "latestTradeCost": 0,
-  "latestTradeReason": "Waiting for first cash-flow position",
+  "latestTradeReason": "Lowered our Breakeven by Rolling for a Credit",
 
   "pfeShares": 0
 }
