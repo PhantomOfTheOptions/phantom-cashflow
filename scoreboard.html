@@ -3,12 +3,7 @@
 <head>
 <title>Buying Cash Flow Scoreboard</title>
 <style>
-body{
-  background:#081326;
-  color:white;
-  font-family:Arial, sans-serif;
-  padding:30px;
-}
+body{background:#081326;color:white;font-family:Arial,sans-serif;padding:30px;}
 .container{max-width:1200px;margin:auto;}
 .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
 .nav a{color:white;text-decoration:none;margin-left:20px;font-weight:bold;}
@@ -28,7 +23,7 @@ th{color:#66d1ff;}
 .timeline-item{padding:16px;border-left:4px solid #2ecc71;margin-bottom:15px;background:#102040;border-radius:8px;}
 .levels{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
 .level{background:#102040;padding:15px;border-radius:12px;text-align:center;}
-.unlocked{border:2px solid #22c55e;}
+.unlocked{border:2px solid #22c55e;background:#14532d;}
 .next{border:2px solid #38bdf8;}
 @media(max-width:900px){
   .stats,.levels{grid-template-columns:1fr;}
@@ -54,48 +49,22 @@ th{color:#66d1ff;}
 
   <div class="card">
     <div class="stats">
-      <div class="stat">
-        <div class="label">Current Level</div>
-        <div class="value">1</div>
-      </div>
-      <div class="stat">
-        <div class="label">Monthly Cash Flow</div>
-        <div class="value">$0.00</div>
-      </div>
-      <div class="stat">
-        <div class="label">Goal</div>
-        <div class="value">$100</div>
-      </div>
-      <div class="stat">
-        <div class="label">Progress</div>
-        <div class="value">0%</div>
-      </div>
-      <div class="stat">
-        <div class="label">Cash Flow XP</div>
-        <div class="value">0</div>
-      </div>
+      <div class="stat"><div class="label">Current Level</div><div class="value" id="currentLevel">1</div></div>
+      <div class="stat"><div class="label">Monthly Cash Flow</div><div class="value" id="monthlyCashFlow">$0.00</div></div>
+      <div class="stat"><div class="label">Goal</div><div class="value" id="goalIncome">$100</div></div>
+      <div class="stat"><div class="label">Progress</div><div class="value" id="progressPercent">0%</div></div>
+      <div class="stat"><div class="label">Cash Flow XP</div><div class="value" id="cashFlowXP">0</div></div>
     </div>
 
     <div class="progress-wrap">
-      <div class="progress-bar"></div>
+      <div class="progress-bar" id="progressBar"></div>
     </div>
-    <div class="progress-text">$0.00 / $100.00 monthly cash flow</div>
+    <div class="progress-text" id="progressText">$0.00 / $100.00 monthly cash flow</div>
   </div>
 
   <div class="card">
     <h2>Level System</h2>
-    <div class="levels">
-      <div class="level unlocked">Level 1<br>$0/mo</div>
-      <div class="level next">Level 2<br>$1/mo</div>
-      <div class="level">Level 3<br>$5/mo</div>
-      <div class="level">Level 4<br>$10/mo</div>
-      <div class="level">Level 5<br>$15/mo</div>
-      <div class="level">Level 6<br>$25/mo</div>
-      <div class="level">Level 7<br>$40/mo</div>
-      <div class="level">Level 8<br>$50/mo</div>
-      <div class="level">Level 9<br>$75/mo</div>
-      <div class="level">Level 10<br>$100/mo</div>
-    </div>
+    <div class="levels" id="levels"></div>
   </div>
 
   <div class="card">
@@ -109,40 +78,104 @@ th{color:#66d1ff;}
       </tr>
       <tr>
         <td>PFE</td>
-        <td>0 Shares</td>
+        <td id="pfeShares">0 Shares</td>
         <td>Covered calls + dividends</td>
         <td>$0.00</td>
       </tr>
       <tr>
-        <td>O</td>
-        <td>$0</td>
-        <td>Monthly dividend</td>
+        <td>Cash Available</td>
+        <td id="cashAvailable">$0</td>
+        <td>Dry powder / collateral</td>
         <td>$0.00</td>
       </tr>
       <tr>
-        <td>JEPI</td>
-        <td>$0</td>
-        <td>Monthly income ETF</td>
-        <td>$0.00</td>
-      </tr>
-      <tr>
-        <td>JEPQ</td>
-        <td>$0</td>
-        <td>Monthly income ETF</td>
-        <td>$0.00</td>
+        <td>Portfolio Value</td>
+        <td id="portfolioValue">$0</td>
+        <td>Total challenge value</td>
+        <td id="monthlyIncomeTable">$0.00</td>
       </tr>
     </table>
   </div>
 
   <div class="card">
     <h2>Challenge Timeline</h2>
-    <div class="timeline-item">
+    <div class="timeline-item" id="timelineItem">
       <strong>Week 1</strong><br>
       Started the Buying Cash Flow Challenge with $3,000.
     </div>
   </div>
 
 </div>
+
+<script>
+function money(value){
+  return "$" + Number(value || 0).toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2
+  });
+}
+
+const levels = [
+  { level: 1, income: 0 },
+  { level: 2, income: 1 },
+  { level: 3, income: 5 },
+  { level: 4, income: 10 },
+  { level: 5, income: 15 },
+  { level: 6, income: 25 },
+  { level: 7, income: 40 },
+  { level: 8, income: 50 },
+  { level: 9, income: 75 },
+  { level: 10, income: 100 }
+];
+
+fetch("data.json?v=" + Date.now())
+  .then(response => response.json())
+  .then(data => {
+    const monthlyIncome = Number(data.monthlyIncome || 0);
+    const goalIncome = Number(data.goalIncome || 100);
+    const progress = Math.min((monthlyIncome / goalIncome) * 100, 100);
+
+    const currentLevel = levels
+      .filter(l => monthlyIncome >= l.income)
+      .slice(-1)[0];
+
+    document.getElementById("currentLevel").textContent = currentLevel.level;
+    document.getElementById("monthlyCashFlow").textContent = money(monthlyIncome);
+    document.getElementById("goalIncome").textContent = money(goalIncome);
+    document.getElementById("progressPercent").textContent = Math.round(progress) + "%";
+    document.getElementById("cashFlowXP").textContent = monthlyIncome;
+    document.getElementById("progressBar").style.width = progress + "%";
+    document.getElementById("progressText").textContent =
+      money(monthlyIncome) + " / " + money(goalIncome) + " monthly cash flow";
+
+    document.getElementById("pfeShares").textContent = (data.pfeShares || 0) + " Shares";
+    document.getElementById("cashAvailable").textContent = money(data.cashAvailable);
+    document.getElementById("portfolioValue").textContent = money(data.portfolioValue);
+    document.getElementById("monthlyIncomeTable").textContent = money(monthlyIncome);
+
+    document.getElementById("timelineItem").innerHTML =
+      "<strong>Week " + data.week + "</strong><br>" +
+      data.latestTradeAction + " — " + data.latestTradeReason + ".";
+
+    const levelContainer = document.getElementById("levels");
+    levelContainer.innerHTML = levels.map(l => {
+      let className = "level";
+
+      if(monthlyIncome >= l.income){
+        className += " unlocked";
+      } else if(l.level === currentLevel.level + 1){
+        className += " next";
+      }
+
+      return `
+        <div class="${className}">
+          Level ${l.level}<br>${money(l.income)}/mo
+        </div>
+      `;
+    }).join("");
+  })
+  .catch(error => console.log(error));
+</script>
 
 </body>
 </html>
