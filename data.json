@@ -12,12 +12,12 @@
   "optionPremiumEarned": 22,
   "portfolioYield": 0,
 
-  "subscribers": 2,
+  "subscribers": 80,
 
   "latestTradeDate": "6/18/2026",
   "latestTradeAction": "Rolled our PFE Put Option for a $22 credit",
   "latestTradeCost": 0,
   "latestTradeReason": "Lowered our Breakeven by Rolling for a Credit",
 
-  "pfeShares": 0
+  "pfeShares": 112.66
 }
