@@ -324,11 +324,13 @@ fetch("data.json?v=" + Date.now())
     const heroSubtitle = document.querySelector(".hero h2");
     if(heroSubtitle) heroSubtitle.textContent = "Starting With " + money(data.startingCapital);
 
+    /*
     const updateBanner = document.querySelector(".update-banner");
     if(updateBanner){
       updateBanner.textContent =
         "Week " + data.week + " • Challenge Started With " + money(data.startingCapital);
     }
+    */
 
     setInfoBox("Trades Made", data.tradesMade);
     setInfoBox("Dividends Collected", money(data.dividendsCollected));
